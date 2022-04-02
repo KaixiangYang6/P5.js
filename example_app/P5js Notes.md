@@ -1,8 +1,13 @@
 # P5.js Notes
 
+程序编写需要注意
+modularity模块性
+reusability可重用性
+
 **Terminal进入example_app文件夹，在其内执行$ node server.js，return “It works”。浏览器内打开<http://localhost:3000/>才可以正常工作。在html内更换js文件无需再次执行server.js，刷新浏览器即可**
 
 put it in comments//把它放到注释里
+execute a function//执行函数
 
 **createCanvas(windowWidth, windowHeight)** //used for web editor
 
