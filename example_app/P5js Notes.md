@@ -1,9 +1,10 @@
-**Terminal进入example_app文件夹，在其内执行$ node server.js，return “It works”。浏览器内打开http://localhost:3000/才可以正常工作。在html内更换js文件无需再次执行server.js，刷新浏览器即可**
+# P5.js Notes
+
+**Terminal进入example_app文件夹，在其内执行$ node server.js，return “It works”。浏览器内打开<http://localhost:3000/>才可以正常工作。在html内更换js文件无需再次执行server.js，刷新浏览器即可**
 
 put it in comments//把它放到注释里
 
 **createCanvas(windowWidth, windowHeight)** //used for web editor
-
 
 draw()的刷新速度是默认60fps
 
@@ -19,7 +20,6 @@ x = x + 1;
 x += 1;
 x ++;
   
-
 println("");    //用于监看
 
 fill(R,G,B,Alpha);//RGB value, transparency
@@ -55,9 +55,8 @@ if(boolean statement){
 ellipse(x, 200, 100, 100);
 if (x > width || x < 0 ){
     speed = speed * -1
-} 
+}
 x = x + speed //小球中心将在到达边缘时反向移动
 
-
-mouseIsPressed //to test if the mouse is being held down, used as a condition for determining true or false 
-mousePressed   //for the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? used as a condition for determining true or false 
+mouseIsPressed //to test if the mouse is being held down, used as a condition for determining true or false
+mousePressed   //for the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? used as a condition for determining true or false
