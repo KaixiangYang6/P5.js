@@ -49,26 +49,30 @@ console.log(this.y); // undefined
 
 **在程序和函数的顶层，let与var不同，不会在全局对象上创建一个属性，如上。**
 
+
+
 ## 语句&语法syntax
 
 **createCanvas(windowWidth, windowHeight)** //used for web editor
 
 draw()的刷新速度是默认60fps
 
-let happyPuppy  //declare variable
+赋值操作assignment operation
 ```js
+let happyPuppy  //declare variable
 function setup(){
     happyPuppy = 100; //This is called assignment operation. assign the value 100 to the variable happyPuppy. store the value 100 in the variable happyPuppy.
 }
 ```
 
++=，++的使用方法
 ```js
 x = x + 5;
 x += 5;
 
 x = x + 1;
 x += 1;
-x ++;
+x ++; //只有在加或减1的时候，才能用++或者--
 ```
 
 print("");    //用于监看
