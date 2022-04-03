@@ -6,7 +6,7 @@ reusability可重用性 参考<4. Reusebility.js>
 
 ## 文件运行准备
 
-**Terminal进入example_app文件夹，在其内执行$ node server.js，return “It works”。浏览器内打开<http://localhost:3000/>才可以正常工作。在html内更换js文件无需再次执行server.js，刷新浏览器即可**
+**Terminal进入example_app文件夹，在其内执行$ node server.js，return “It works”。浏览器内打开<http://localhost:3000/>才可以正常工作。在html内更换js文件无需再次执行node server.js，刷新浏览器即可**
 
 ### 英语短句
 
@@ -14,7 +14,7 @@ put it in comments//把它放到注释里
 execute a function//执行函数  
 the class is a generic template.  
 
-##### let var 的区别
+### let var 的区别
 
 reference: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let/>
 
@@ -65,6 +65,7 @@ function setup(){
 }
 ```
 
+
 +=，++的使用方法
 ```js
 x = x + 5;
@@ -85,7 +86,7 @@ image(img, coordinate, coordinate, (size, size)) //image(img, 显示坐标，显
 
 createGraphics(W, h) //创建新的p5渲染对象，同时画一个off-screen图形缓存
 
-##### if else
+### if else
 在连续if else中，**注意布尔条件的顺序，从上到下需要从大到小满足范围逐渐扩大**，而不是满足范围逐渐缩小（x>250,x?150,x>50），否则会影响结果，结果之间互不共存。
 ```js
 if(boolean statement){
@@ -102,7 +103,7 @@ if(boolean statement){
 }
 ```
 
-##### and:&&    or:||
+### and:&& or:||
 ```js
 ellipse(x, 200, 100, 100);
 if (x > width || x < 0 ){
@@ -115,7 +116,7 @@ x = x + speed
 
 **mousePressed**   //for the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? used as a condition for determining true or false
 
-## 构建类class
+## 构建类Class
 
 参考 <5.Create a Class.js>
 
@@ -156,4 +157,4 @@ x = x + speed
      bubble2.show();
    }
    ```
-4. 
+ 
