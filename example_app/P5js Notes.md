@@ -12,6 +12,7 @@ reusability可重用性 <参考4. Reusebility.js>
 
 put it in comments//把它放到注释里
 execute a function//执行函数
+the class is a generic template.
 
 ### let var 的区别
 
@@ -106,3 +107,44 @@ x = x + speed //小球中心将在到达边缘时反向移动
 
 mouseIsPressed //to test if the mouse is being held down, used as a condition for determining true or false
 mousePressed   //for the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? used as a condition for determining true or false
+
+### 构建类class
+
+1. 声明变量，在setup()中定义变量为新的类，也就是定义变量为对象。并应用自定义的参数。
+   ```js
+   function setup(){
+     createCanvas(600, 400);
+     bubble1 = new Bubble(200, 200, 40);
+     bubble2 = new Bubble(400, 200 ,20);
+   }
+   ```
+2. 声明构建函数constructor(), 基础属性property在constructor中构建，功能属性functionnality在其后**直接**构建，其中this指代当前类。自定义参数也在此声明。
+   ```js
+   class Bubble {
+    constructor(x, y, r) {
+        this.x = x;//this.x这类变量，相当于占位的，没有实际意义但可充当变量。
+        this.y = y;
+        this.r = r;
+    }
+    move() {
+        this.x = this.x + random(-5, 5);
+        this.y = this.y + random(-5, 5);
+    }
+    show() {
+        stroke(255);
+        strokeWeight(4);
+        noFill();
+        ellipse(this.x, this.y, this.r * 2, this.r * 2);
+    }
+   }
+   ```
+3. 现在可以在draw()中调用对象
+   ```js
+   function draw(){
+     bubble1.move();
+     bubble1.show();
+     bubble2.move();
+     bubble2.show();
+   }
+   ```
+4. 
