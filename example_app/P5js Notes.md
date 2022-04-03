@@ -14,7 +14,7 @@ put it in comments//把它放到注释里
 execute a function//执行函数  
 the class is a generic template.  
 
-### let var 的区别
+##### let var 的区别
 
 reference: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let/>
 
@@ -49,7 +49,7 @@ console.log(this.y); // undefined
 
 **在程序和函数的顶层，let与var不同，不会在全局对象上创建一个属性，如上。**
 
-### 语句&语法syntax
+## 语句&语法syntax
 
 **createCanvas(windowWidth, windowHeight)** //used for web editor
 
@@ -81,30 +81,24 @@ image(img, coordinate, coordinate, (size, size)) //image(img, 显示坐标，显
 
 createGraphics(W, h) //创建新的p5渲染对象，同时画一个off-screen图形缓存
 
+##### if else
 在连续if else中，**注意布尔条件的顺序，从上到下需要从大到小满足范围逐渐扩大**，而不是满足范围逐渐缩小（x>250,x?150,x>50），否则会影响结果，结果之间互不共存。
 ```js
 if(boolean statement){
-
 }else if(boolean statement){
-
 }else if(boolean statement){
-
 }else{
-
 }
 //如果同时使用多个if，只要同时满足各自的布尔条件，结果之间将相互共存。
 if(boolean statement){
-
 }
 if(boolean statement){
-
 }
 if(boolean statement){
-
 }
 ```
 
-### and:&&    or:||
+##### and:&&    or:||
 ```js
 ellipse(x, 200, 100, 100);
 if (x > width || x < 0 ){
