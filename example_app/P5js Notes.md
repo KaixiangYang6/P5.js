@@ -10,9 +10,9 @@ reusability可重用性 <参考4. Reusebility.js>
 
 ### 英语短句
 
-put it in comments//把它放到注释里
-execute a function//执行函数
-the class is a generic template.
+put it in comments//把它放到注释里  
+execute a function//执行函数  
+the class is a generic template.  
 
 ### let var 的区别
 
@@ -110,7 +110,7 @@ mousePressed   //for the event, **the moment** when the mouse is being clicked, 
 
 ### 构建类class
 
-参考<5. Create a Class.js>
+参考 <5.Create a Class.js>
 
 1. 声明变量，在setup()中定义变量为新的类，也就是定义变量为对象。并应用自定义的参数。
    ```js
