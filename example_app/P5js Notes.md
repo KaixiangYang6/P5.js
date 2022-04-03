@@ -110,6 +110,8 @@ mousePressed   //for the event, **the moment** when the mouse is being clicked, 
 
 ### 构建类class
 
+参考<5. Create a Class.js>
+
 1. 声明变量，在setup()中定义变量为新的类，也就是定义变量为对象。并应用自定义的参数。
    ```js
    function setup(){
