@@ -53,6 +53,8 @@ console.log(this.y); // undefined
 
 ## 语句&语法syntax
 
+console.log(""); 常常用于测试，排错
+
 **createCanvas(windowWidth, windowHeight)** //used for web editor
 
 draw()的刷新速度是默认60fps
@@ -118,7 +120,7 @@ x = x + speed
 
 **mouseIsPressed** //to test if the mouse is being held down, used as a condition for determining true or false
 
-**mousePressed**   //for the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? used as a condition for determining true or false
+**mousePressed**   //global event. For the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? It can be used as a condition for determining true or false. 
 
 ## 构建类Class
 
@@ -168,4 +170,41 @@ x = x + speed
    ```
 
 ## 类文件与sketch文件管理
-可以在文件夹根目录里，放class.js创建类的文件，和sketch.js绘制文件。在index.html文件的<body>部分执行class.js和sketch.js两个文件即可正常运行。
+可以在文件夹根目录里，放class.js创建类的文件，和sketch.js绘制文件。在index.html文件的'body'部分执行class.js和sketch.js两个文件即可正常运行。
+
+```html
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <title>P5.js Practice</title> 
+      <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+      
+   </head>
+   <body>
+      <h1>P5.js Practice</h1>
+      <p id='status'>change script file in index.html file</p>
+      <script src="6. Array.js"></script>
+   </body>
+</html>
+```
+
+### 数组使用
+
+参考<6. Array_2.js>
+bubbles.**push**(b);    //向数组内添加对象，添加到末尾
+以下案例中，数组，对象，类的关系**非常重要**
+
+```js
+let bubbles = [];
+
+function setup() {
+    createCanvas(600, 400);
+    let x = random(width);  //画布宽度内随机
+    let y = random(height); //画布高度内随机
+    let r = random(10, 50); //自定义大小
+    let b = new Bubble(x, y, r);    //创建一个对象，并将参数应用到类的参数上
+    bubbles.push(b);    //将属于Bubble类的对象b添加到bubbles数组中
+
+}
+```
