@@ -49,25 +49,29 @@ console.log(this.y); // undefined
 
 **在程序和函数的顶层，let与var不同，不会在全局对象上创建一个属性，如上。**
 
-### 语句
+### 语句&语法syntax
 
 **createCanvas(windowWidth, windowHeight)** //used for web editor
 
 draw()的刷新速度是默认60fps
 
 let happyPuppy  //declare variable
+```js
 function setup(){
     happyPuppy = 100; //This is called assignment operation. assign the value 100 to the variable happyPuppy. store the value 100 in the variable happyPuppy.
 }
+```
 
+```js
 x = x + 5;
 x += 5;
 
 x = x + 1;
 x += 1;
 x ++;
-  
-println("");    //用于监看
+```
+
+print("");    //用于监看
 
 fill(R,G,B,Alpha);//RGB value, transparency
 
@@ -77,7 +81,8 @@ image(img, coordinate, coordinate, (size, size)) //image(img, 显示坐标，显
 
 createGraphics(W, h) //创建新的p5渲染对象，同时画一个off-screen图形缓存
 
-//在连续if else中，**注意布尔条件的顺序，从上到下需要从大到小满足范围逐渐扩大**，而不是满足范围逐渐缩小（x>250,x?150,x>50），否则会影响结果，结果之间互不共存。
+在连续if else中，**注意布尔条件的顺序，从上到下需要从大到小满足范围逐渐扩大**，而不是满足范围逐渐缩小（x>250,x?150,x>50），否则会影响结果，结果之间互不共存。
+```js
 if(boolean statement){
 
 }else if(boolean statement){
@@ -97,18 +102,22 @@ if(boolean statement){
 if(boolean statement){
 
 }
+```
 
-**//and:&& or:||**
+### and:&&    or:||
+```js
 ellipse(x, 200, 100, 100);
 if (x > width || x < 0 ){
-    speed = speed * -1
+    speed = speed * -1  //小球中心将在到达边缘时反向移动
 }
-x = x + speed //小球中心将在到达边缘时反向移动
+x = x + speed 
+```
 
-mouseIsPressed //to test if the mouse is being held down, used as a condition for determining true or false
-mousePressed   //for the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? used as a condition for determining true or false
+**mouseIsPressed** //to test if the mouse is being held down, used as a condition for determining true or false
 
-### 构建类class
+**mousePressed**   //for the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? used as a condition for determining true or false
+
+## 构建类class
 
 参考 <5.Create a Class.js>
 
