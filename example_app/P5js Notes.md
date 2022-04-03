@@ -191,8 +191,13 @@ x = x + speed
 
 ### 数组使用
 
-参考<6. Array_2.js>
-bubbles.**push**(b);    //向数组内添加对象，添加到末尾
+reference: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array>
+
+参考 <6. Array_2.js>  
+bubbles.push(b);    //向数组bubbles内添加对象b，添加到末尾
+
+bubble.pop()
+
 以下案例中，数组，对象，类的关系**非常重要**
 
 ```js
