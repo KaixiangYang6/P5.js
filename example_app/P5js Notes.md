@@ -58,6 +58,7 @@ console.log(this.y); // undefined
 draw()的刷新速度是默认60fps
 
 赋值操作assignment operation
+
 ```js
 let happyPuppy  //declare variable
 function setup(){
@@ -67,6 +68,7 @@ function setup(){
 
 
 +=，++的使用方法
+
 ```js
 x = x + 5;
 x += 5;
@@ -87,6 +89,7 @@ image(img, coordinate, coordinate, (size, size)) //image(img, 显示坐标，显
 createGraphics(W, h) //创建新的p5渲染对象，同时画一个off-screen图形缓存
 
 ### if else
+
 在连续if else中，**注意布尔条件的顺序，从上到下需要从大到小满足范围逐渐扩大**，而不是满足范围逐渐缩小（x>250,x?150,x>50），否则会影响结果，结果之间互不共存。
 ```js
 if(boolean statement){
@@ -104,6 +107,7 @@ if(boolean statement){
 ```
 
 ### and:&& or:||
+
 ```js
 ellipse(x, 200, 100, 100);
 if (x > width || x < 0 ){
@@ -121,6 +125,7 @@ x = x + speed
 参考 <5.Create a Class.js>
 
 1. 声明变量，在setup()中定义变量为新的类，也就是定义变量为对象。并应用自定义的参数。
+
    ```js
    function setup(){
      createCanvas(600, 400);
@@ -128,7 +133,9 @@ x = x + speed
      bubble2 = new Bubble(400, 200 ,20);
    }
    ```
+
 2. 声明构建函数constructor(), 基础属性property在constructor中构建，功能属性functionnality在其后**直接**构建，其中this指代当前类。自定义参数也在此声明。
+
    ```js
    class Bubble {
     constructor(x, y, r) {
@@ -148,7 +155,9 @@ x = x + speed
     }
    }
    ```
+
 3. 现在可以在draw()中调用对象
+
    ```js
    function draw(){
      bubble1.move();
@@ -157,4 +166,6 @@ x = x + speed
      bubble2.show();
    }
    ```
- 
+
+## 类文件与sketch文件管理
+可以在文件夹根目录里，放class.js创建类的文件，和sketch.js绘制文件。在index.html文件的<body>部分执行class.js和sketch.js两个文件即可正常运行。
