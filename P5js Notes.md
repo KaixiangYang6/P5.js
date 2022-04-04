@@ -15,6 +15,7 @@ put it in comments  把它放到注释里
 execute a function  执行函数  
 The class is a generic template.  类是一个通用模版
 assignment operation  赋值操作
+it is assigned to the diameter of the circle.  它被分配给/赋值给圆的直径。
 iterate over every element of the array 迭代/重复数组中的每个元素
 
 ### let var 的区别
@@ -52,8 +53,6 @@ console.log(this.y); // undefined
 
 **在程序和函数的顶层，let与var不同，不会在全局对象上创建一个属性，如上。**
 
-
-
 ## 语句&语法syntax
 
 console.log(""); 常常用于测试，排错。在网页浏览器的开发者页面中的console中显示
@@ -68,7 +67,6 @@ function setup(){
     happyPuppy = 100; //This is called assignment operation. assign the value 100 to the variable happyPuppy. store the value 100 in the variable happyPuppy.
 }
 ```
-
 
 +=，++的使用方法
 
@@ -96,6 +94,7 @@ dist(x1, y1, x2, y2)  //返回两个坐标点的直线距离
 ### if else
 
 在连续if else中，**注意布尔条件的顺序，从上到下需要从大到小满足范围逐渐扩大**，而不是满足范围逐渐缩小（x>250,x?150,x>50），否则会影响结果，结果之间互不共存。
+
 ```js
 if(boolean statement){
 }else if(boolean statement){
@@ -123,7 +122,7 @@ x = x + speed
 
 **mouseIsPressed** //to test if the mouse is being held down, used as a condition for determining true or false
 
-**mousePressed**   //global event. For the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? It can be used as a condition for determining true or false. 
+**mousePressed**   //global event. For the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? It can be used as a condition for determining true or false.
 
 ## 构建类Class
 
@@ -173,7 +172,9 @@ x = x + speed
      bubble2.show();
    }
    ```
+
 4. 类的属性参数和功能性函数使用方法
+
    ```js
    dist(bubble1.x, bbubble1.y, bubble2.x, bubble2.y);//可直接在对象中调用属性参数
 
@@ -181,6 +182,7 @@ x = x + speed
    ```
 
 ## 类文件与sketch文件管理
+
 可以在文件夹根目录里，放class.js创建类的文件，和sketch.js绘制文件。在index.html文件的'body'部分执行class.js和sketch.js两个文件即可正常运行。
 
 ```html
@@ -223,7 +225,6 @@ function mousePressed() {
 ```
 
 **以上案例中，可以看到，bubbles[i].contains()中的contains是Bubble类的功能函数，bubbles[i]实际是指bubbles数组中的每个属于Bubble类的元素，所以可以直接调用Bubble类的功能函数。而bubbles.splice()中的splice属于js自带的对数组进行处理的函数指令，所以是直接对bubbles数组应用，而不是对bubbles[i]数组中的元素进行应用。**
-
 
 以下案例中，对数组，对象，类的关系区分**非常重要**，在每个for循环里variable变量b都会被添加到bubbles数组中其自身清空，所以下一次得以重新创建归属于Bubble类的对象new Bubble()
 
@@ -277,3 +278,20 @@ class Bubble {
   ```
 
   将bubbles数组中的每个b元素按照顺序执行。b代表数组中的每个元素。用于替换上面for条件里的let i = 0; i < bubbles.length; i++
+
+## Image使用方法
+
+  预加载，提前加载好图片随时调用。loadImage('文件夹命名/文件命名')
+
+  ```js
+let flower;
+let kittens = [];
+
+  function preload(){
+    flower = loadImage('kittens/flower.png')
+    for (let i = 0; i <5; i++){
+      kittens[i] = loadImage('kittens/kitten'+i+'.jpg');
+      kittens[i] = loadImage(`kittens/kitten${i}.jpg`); //或者
+    }
+  }
+  ```
