@@ -200,7 +200,7 @@ x = x + speed
 </html>
 ```
 
-### 数组使用
+## 数组使用
 
 reference: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array>
 
