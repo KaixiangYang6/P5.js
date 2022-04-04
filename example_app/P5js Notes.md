@@ -222,8 +222,7 @@ function mousePressed() {
 }
 ```
 
-**以上案例中，可以看到，bubbles[i].contains()中的contains是Bubble类的功能函数，bubbles[i]实际是指bubbles数组中的每个属于Bubble类的对象，所以可以直接调用Bubble类的功能函数。而bubbles.splice()中的splice属于js自带的对数组进行处理的函数指令，所以是直接对bubbles应用，而不是对bubbles[i]数组中的对象进行应用。
-**
+**以上案例中，可以看到，bubbles[i].contains()中的contains是Bubble类的功能函数，bubbles[i]实际是指bubbles数组中的每个属于Bubble类的元素，所以可以直接调用Bubble类的功能函数。而bubbles.splice()中的splice属于js自带的对数组进行处理的函数指令，所以是直接对bubbles数组应用，而不是对bubbles[i]数组中的元素进行应用。**
 
 
 以下案例中，对数组，对象，类的关系区分**非常重要**，在每个for循环里variable变量b都会被添加到bubbles数组中其自身清空，所以下一次得以重新创建归属于Bubble类的对象new Bubble()
@@ -276,5 +275,5 @@ class Bubble {
     b.move();
   }
   ```
-  
+
   将bubbles数组中的每个b元素按照顺序执行。b代表数组中的每个元素。用于替换上面for条件里的let i = 0; i < bubbles.length; i++
