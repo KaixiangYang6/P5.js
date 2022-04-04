@@ -11,11 +11,6 @@ function setup() {
     }
 }
 
-// function mousePressed() {    //mouseDragged()
-//     let r = random(10, 50);
-//     let b = new Bubble(mouseX, mouseY, r);
-//     bubbles.push(b);    //向数组内添加对象，添加到末尾
-// }
 function mousePressed() {
     for (let i = 0; i < bubbles.length; i++) {//数组里的每个对象都执行一遍clicked()
         bubbles[i].clicked(mouseX, mouseY); //类里的clivked被重命名为rollover

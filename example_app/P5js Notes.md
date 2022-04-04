@@ -196,20 +196,38 @@ reference: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Gl
 参考 <6. Array_2.js>  
 bubbles.push(b);    //向数组bubbles内添加对象b，添加到末尾
 
-bubble.pop()
+bubble.splice();    //splice删除从第i个起的1个对象。
+注意调用push，splice这种默认函数时，是对对象应用函数，而不是对数组应用。
 
-以下案例中，数组，对象，类的关系**非常重要**
+在splice删除数组中的对象时，倒序删除可以避免，因为删除前一个，后一个向前补位而被错过的bug。以下案例为倒序删除：
+
+```js
+function mousePressed() {
+    for (let i = bubbles.length - 1; i >= 0; i--) {
+        if (bubbles[i].contains(mouseX, mouseY)) {
+            bubbles.splice(i, 1); //splice删除从第i个起的1个对象。注意
+        }//注意调用push，splice这种默认函数时，是对对象应用，
+    }
+}
+```
+
+**以上案例中，可以看到，bubbles[i].contains()中的contains是Bubble类的功能函数，bubbles[i]实际是指bubbles数组中的每个属于Bubble类的对象，所以可以直接调用Bubble类的功能函数。而bubbles.splice()中的splice属于js自带的对数组进行处理的函数指令，所以是直接对bubbles应用，而不是对bubbles[i]数组中的对象进行应用。
+**
+
+
+以下案例中，对数组，对象，类的关系区分**非常重要**，在每个for循环里b都会被添加到bubbles数组中，所以下一次得以重新创建归属于Bubble类的对象new Bubble()
 
 ```js
 let bubbles = [];
 
 function setup() {
     createCanvas(600, 400);
-    let x = random(width);  //画布宽度内随机
-    let y = random(height); //画布高度内随机
-    let r = random(10, 50); //自定义大小
-    let b = new Bubble(x, y, r);    //创建一个对象，并将参数应用到类的参数上
-    bubbles.push(b);    //将属于Bubble类的对象b添加到bubbles数组中
-
+    for (let i = 0; i < 5; i++) {
+        let x = random(width);  //画布宽度内随机
+        let y = random(height); //画布高度内随机
+        let r = random(10, 50); //自定义大小
+        let b = new Bubble(x, y, r); //创建一个对象，并将自定义的参数应用到类的原参数上
+        bubbles.push(b);    //将属于Bubble类的对象b添加到bubbles数组中
+    }
 }
 ```
