@@ -6,7 +6,7 @@ function setup() {
         let x = random(width);  //画布宽度内随机
         let y = random(height); //画布高度内随机
         let r = random(10, 50); //自定义大小
-        let b = new Bubble(x, y, r);    //创建一个对象，并将自定义的参数应用到类的原参数上
+        let b = new Bubble(x, y, r); //创建一个对象，并将自定义的参数应用到类的原参数上
         bubbles.push(b);    //将属于Bubble类的对象b添加到bubbles数组中
     }
 }

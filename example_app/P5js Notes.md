@@ -10,9 +10,10 @@ reusability可重用性 参考<4. Reusebility.js>
 
 ### 英语短句
 
-put it in comments//把它放到注释里  
-execute a function//执行函数  
-the class is a generic template.  
+put it in comments  把它放到注释里  
+execute a function  执行函数  
+The class is a generic template.  类是一个通用模版
+assignment operation  赋值操作
 
 ### let var 的区别
 
@@ -53,13 +54,11 @@ console.log(this.y); // undefined
 
 ## 语句&语法syntax
 
-console.log(""); 常常用于测试，排错
+console.log(""); 常常用于测试，排错。在网页浏览器的开发者页面中的console中显示
 
 **createCanvas(windowWidth, windowHeight)** //used for web editor
 
 draw()的刷新速度是默认60fps
-
-赋值操作assignment operation
 
 ```js
 let happyPuppy  //declare variable
@@ -89,6 +88,8 @@ map(vvariable, Min, Max, targetMin, targetMax)
 image(img, coordinate, coordinate, (size, size)) //image(img, 显示坐标，显示坐标，(图片尺寸，图片尺寸))
 
 createGraphics(W, h) //创建新的p5渲染对象，同时画一个off-screen图形缓存
+
+dist(x1, y1, x2, y2)  //返回两个坐标点的直线距离
 
 ### if else
 
@@ -124,6 +125,8 @@ x = x + speed
 
 ## 构建类Class
 
+请结合数组内容阅读
+
 参考 <5.Create a Class.js>
 
 1. 声明变量，在setup()中定义变量为新的类，也就是定义变量为对象。并应用自定义的参数。
@@ -140,7 +143,7 @@ x = x + speed
 
    ```js
    class Bubble {
-    constructor(x, y, r) {
+    constructor(x, y, r) {//可赋值给属性参数一个基础值，如(x, y, r=50)
         this.x = x;//this.x这类变量，相当于占位的，没有实际意义但可充当变量。
         this.y = y;
         this.r = r;
@@ -167,6 +170,12 @@ x = x + speed
      bubble2.move();
      bubble2.show();
    }
+   ```
+4. 类的属性参数和功能性函数使用方法
+   ```js
+   dist(bubble1.x, bbubble1.y, bubble2.x, bubble2.y);//可直接在对象中调用属性参数
+   
+
    ```
 
 ## 类文件与sketch文件管理
@@ -215,7 +224,7 @@ function mousePressed() {
 **
 
 
-以下案例中，对数组，对象，类的关系区分**非常重要**，在每个for循环里b都会被添加到bubbles数组中，所以下一次得以重新创建归属于Bubble类的对象new Bubble()
+以下案例中，对数组，对象，类的关系区分**非常重要**，在每个for循环里variable变量b都会被添加到bubbles数组中其自身清空，所以下一次得以重新创建归属于Bubble类的对象new Bubble()
 
 ```js
 let bubbles = [];
@@ -230,4 +239,24 @@ function setup() {
         bubbles.push(b);    //将属于Bubble类的对象b添加到bubbles数组中
     }
 }
+
+class Bubble {
+    constructor(x, y, r) {
+        this.x = x;//this.x这类变量，相当于占位的，没有实际意义但可充当变量。
+        this.y = y;
+        this.r = r;
+        this.brightness = 0;
+    }
+```
+
+这里有一个小细节需要注意。Bubble类的constructor构造函数中，定义了x, y, r三个参数作为属性。在将b定义为Bubble类的new Bubble()对象时，需要对3个属性参数进行定义，不能让属性参数为空。如果构造函数已经赋予了属性参数基础数值，那么在新建对象时不赋值也可，只要保证不为空就行。以下为赋予r基础数值：
+
+```js
+class Bubble {
+  constructor(x, y, r = 50) {
+    this.x = x;
+    this.y = y;
+    this.r = r;
+    this.brightness = 0;
+  }
 ```
