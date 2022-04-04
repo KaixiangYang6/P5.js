@@ -1,25 +1,53 @@
-let bubble1;
-let bubble2;
+let bubbles = [];
+let unicorn;
 
 function setup() {
   createCanvas(600, 400);
-  bubble1 = new Bubble(200, 200);
-  bubble2 = new Bubble(400, 200, 100);
+  for (let i = 0; i < 10; i++) {
+    let x = random(width);
+    let y = random(height);
+    let r = random(10, 50);
+    bubbles[i] = new Bubble(x, y, r);
+  }
+  unicorn = new Bubble(400, 200, 10);
 }
 
 function draw() {
   background(0);
+  // unicorn.x = mouseX;
+  // unicorn.y = mouseY;
+  // unicorn.show();
+  // unicorn.move();
 
-  if (bubble1.intersects(bubble2)) {
-    background(200, 0, 100);
+  // if (bubble1.intersects(bubble2)) {
+  //   background(200, 0, 100);
+  // }
+  // for (let i = 0; i < bubbles.length; i++) {
+  //   bubbles[i].show();
+  //   bubbles[i].move();
+  // }
+  //以下与以上for循环相同作用
+  for (let b of bubbles) { //将bubbles数组中的每个b元素按照顺序执行。b代表数组中的每个元素。用于替换上面for条件里的let i = 0; i < bubbles.length; i++
+    b.show();
+    b.move();
+    let overlapping = false;  //在进行for里的重叠判定之前，先定义一个状态。
+    for (let other of bubbles) {
+      if (b !== other && b.intersects(other)) {  //b和other分别代表Bubble数组中的每个元素， 
+        overlapping = true;
+      }
+    }
+    if (overlapping) {
+      b.changeColor(255);
+    } else {
+      b.changeColor(0);
+    }
+    /*以上的逻辑：b和other都是指代bubbles数组中的每个元素，用两个变量指代是为了进行比较。
+    当b中的一个元素跟other的每个元素进行是否重合的判定时，会出现即使之前有重合，
+    最后一个没有重合，最终被判定为没有重合的情况。*/
   }
 
-  bubble1.show();
-  bubble2.show();
-  bubble1.move();
-  //bubble2.move();
-  bubble2.x = mouseX;
-  bubble2.y = mouseY;
+
+
 }
 
 class Bubble {

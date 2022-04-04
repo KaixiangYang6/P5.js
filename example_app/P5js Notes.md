@@ -10,10 +10,12 @@ reusability可重用性 参考<4. Reusebility.js>
 
 ### 英语短句
 
+comment v.注释掉
 put it in comments  把它放到注释里  
 execute a function  执行函数  
 The class is a generic template.  类是一个通用模版
 assignment operation  赋值操作
+iterate over every element of the array 迭代/重复数组中的每个元素
 
 ### let var 的区别
 
@@ -174,7 +176,7 @@ x = x + speed
 4. 类的属性参数和功能性函数使用方法
    ```js
    dist(bubble1.x, bbubble1.y, bubble2.x, bubble2.y);//可直接在对象中调用属性参数
-   
+
 
    ```
 
@@ -260,3 +262,19 @@ class Bubble {
     this.brightness = 0;
   }
 ```
+
+### For ...of array
+
+```js
+  for (let i = 0; i < bubbles.length; i++) {
+  bubbles[i].show();
+  bubbles[i].move();
+  }
+  //以上与以下for循环相同作用
+  for (let b of bubbles) { //将bubbles数组中的每个b元素按照顺序执行。b代表数组中的每个元素。用于替换上面for条件里的let i = 0; i < bubbles.length; i++
+    b.show();
+    b.move();
+  }
+  ```
+  
+  将bubbles数组中的每个b元素按照顺序执行。b代表数组中的每个元素。用于替换上面for条件里的let i = 0; i < bubbles.length; i++
