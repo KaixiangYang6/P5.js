@@ -1,9 +1,9 @@
 # P5.js Notes
 
-程序编写需要注意
-modularity模块性 参考<3. Define a Function.js>  
+程序编写需要注意：  
+modularity模块性 参考 <3. Define a Function.js>  
 
-reusability可重用性 参考<4. Reusebility.js>
+reusability可重用性 参考 <4. Reusebility.js>
 
 ## 文件运行准备
 
