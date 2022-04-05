@@ -14,7 +14,7 @@ function preload() {
 
 function setup() {
     createCanvas(600, 400);
-    //创建了10个Bubble类的元素给变量b，并将b添加进了bubbles数组
+    //创建了10个Bubble类的元素给变量b，并将b添加进了bubbles数组。元素数量可以大于图片数量。
     for (let i = 0; i < 10; i++) {
         let x = random(width);
         let y = random(height);
@@ -64,7 +64,7 @@ class Bubble {
     }
 
     show() {
-        image(this.kitten, this.x, this.y, this.r, this.r);
+        image(this.kitten, this.x, this.y, this.r, this.r); //this.kitten等于kittens数组中的随机对象，所以在draw()中显示的是图片
         // stroke(255);
         // strokeWeight(4);
         // fill(this.brightness, 125);

@@ -1,7 +1,8 @@
 # P5.js Notes
 
 程序编写需要注意
-modularity模块性 参考<3. Define a Function.js>
+modularity模块性 参考<3. Define a Function.js>  
+
 reusability可重用性 参考<4. Reusebility.js>
 
 ## 文件运行准备
@@ -280,6 +281,8 @@ class Bubble {
   将bubbles数组中的每个b元素按照顺序执行。b代表数组中的每个元素。用于替换上面for条件里的let i = 0; i < bubbles.length; i++
 
 ## Image使用方法
+
+参考<8. Objects and Images.js> 理通逻辑很重要。
 
   预加载，提前加载好图片随时调用。loadImage('文件夹命名/文件命名')
 
