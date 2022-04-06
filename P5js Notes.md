@@ -121,9 +121,13 @@ if (x > width || x < 0 ){
 x = x + speed 
 ```
 
-**mouseIsPressed** //to test if the mouse is being held down, used as a condition for determining true or false
+The **mouseClicked()** function is called once after a mouse button has been pressed and then released. This function is only guaranteed to be run when the left mouse button is clicked.
 
-**mousePressed**   //global event. For the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? It can be used as a condition for determining true or false.
+The **mouseReleased()** function is called every time a mouse button is released. If no mouseReleased() function is defined, the touchEnded() function will be called instead if it is defined.
+
+**mouseIsPressed()** //to test if the mouse is being held down, used as a condition for determining true or false
+
+**mousePressed()**   //global event. For the event, **the moment** when the mouse is being clicked, all the stuff that happens after that is it being held down? It can be used as a condition for determining true or false.
 
 ## 构建类Class
 

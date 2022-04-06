@@ -1,0 +1,21 @@
+{
+  "name": "socket_configuration",
+  "version": "1.0.0",
+  "description": "node practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "socket",
+    "p5.js",
+    "node"
+  ],
+  "author": "Kaixiang Yang",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1"
+  }
+}
