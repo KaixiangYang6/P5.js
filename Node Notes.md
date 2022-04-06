@@ -34,10 +34,10 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
     console.log("It works");
     ```
 
-2. 终端执行`$ cd 文件夹地址（在文件夹简介里复制粘贴）`，进入文件夹后。在其内执行`$ npm init`，并完成内容填写。
+2. 终端执行`$ cd 文件夹地址（在文件夹简介里复制粘贴）`，进入文件夹后。在其内执行`$ npm init`，并完成内容填写。将产生一个package.json文件。
 npm是node package manager的缩写，需要它去安装Express，设置项目的配置文件。
 
-3. 终端再执行`$ npm install express --save`为项目安装Express包，安装完整后可以在json文件的dependencies开发依赖下看到express。
+3. 终端再执行`$ npm install express --save`为项目安装Express包，安装完整后可以在json文件的dependencies开发依赖下看到express。这一步产生package-lock.json文件和node_module文件夹。
 
 4. 在server.js文件内调用express包，将其赋给变量，并执行功能。
 
@@ -47,13 +47,13 @@ npm是node package manager的缩写，需要它去安装Express，设置项目�
    var server = app.listen(3000);
    ```
 
-5. 加载静态文件，含有html、css、sketch文件的文件夹。添加以下语句
+5. 加载静态文件，含有html、css、sketch文件的文件夹。继续添加以下语句
 
     ```js
     app.use(express.static('public'));
     ```
 
-6. 打开浏览器输入<localhost:3000>，如果是空白的，但没有显示报错。那么到目前为止这是顺利的，只是暂时没有内容显示。
+6. 终端执行`$node server.js`，之后打开浏览器输入<localhost:3000>，如果是空白的，但没有显示报错。那么到目前为止这是顺利的，只是暂时没有内容显示。
 
 7. 到空的html文件内添加
 
@@ -72,30 +72,44 @@ npm是node package manager的缩写，需要它去安装Express，设置项目�
 
 8. 重新刷新浏览器<localhost:3000>, 将会看到Node.js practice
 
-9. 目前设置完了html框架，需要调用p5.js的库，来在项目中使用p5.js。如果需要用其他的库，如ML5, Three.js写三维的东西都在这里调用。
-    在`<head>`部分的`<title>`行之后，添加
+9. 目前设置完了html框架，需要调用p5.js的库，来在项目中使用p5.js。如果需要用其他的库，如ML5, Three.js写三维的东西都在这里调用。此处的在线库是从CDN(Content Delivery Network)中获得的，在此网页中查看P5.js的CDN<https://p5js.org/get-started/>  
 
-    ```html
+   在`<head>`部分的`<title>`行之后，添加  
+
+   ```html
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
-    ```
+   ```
 
-    这样这一部分看起来就像是现在的这个样子
+   这样这一部分看起来就像是现在的这个样子
+
+   ```html
+   <head>
+     <meta charset="utf-8" />
+     <title>My test project</title>
+     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js">  </script>
+   </head>
+   ```
+
+10. html文件相当于绘画的画框，sketch.js决定绘画的具体内容。需要在`<body>`部分添加，也可以在`<head>`部分添加
 
     ```html
-    <head>
-      <meta charset="utf-8" />
-      <title>My test project</title>
-      <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js">  </script>
-    </head>
-    ```
-
-10. html文件相当于绘画的画框，sketch.js决定绘画的具体内容。需要在`<body>`部分添加
-
-    ```html
-    <body>
+     <body>
       <h1>My first title!</h1>
       <script src="sketch.js"></script>
-    </body>
+     </body>
+    ```
+
+    ```html
+    <html>
+      <head>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+        <script src="sketch.js"></script>
+     </head>
+     <body>
+       <main>
+       </main>
+     </body>
+    </html>
     ```
 
 11. 在空的sketch.js文件内粘贴以下代码
@@ -106,18 +120,18 @@ npm是node package manager的缩写，需要它去安装Express，设置项目�
     }
 
     function draw() {
-      background(100);
-      rectMode(CENTER);
-      strokeWeight(3);
-      stroke(255, 0, 0);
-      fill(255, 192, 203);
-      rect(100, 100, 200, 200);
+       background(100);
+       rectMode(CENTER);
+       strokeWeight(3);
+       stroke(255, 0, 0);
+       fill(255, 192, 203);
+       rect(100, 100, 200, 200);
     }
     ```
 
-    刷新浏览器或者再次执行`$ node server.js`就可以正常看到内容了。
+   刷新浏览器或者再次执行`$ node server.js`就可以正常看到内容了。
 
-    **到此为止，这个文件夹可以用来在本地进行p5.js的运行。**
+   **到此为止，这个文件夹可以用来在本地进行p5.js的运行。**
 
 ## 多端口的交互，接着上面继续
 
