@@ -28,6 +28,8 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
 
 ## 命令执行
 
+参考<https://lab.arts.ac.uk/books/web-technology/page/web-app-template-for-beginners>
+
 1. 在终端内执行`$ node server.js`执行server.js这个文件，以下写在文件内的语句将会出现在终端上。
 
     ```js
