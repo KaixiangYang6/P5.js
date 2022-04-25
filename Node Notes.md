@@ -42,7 +42,7 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
    ```
 
 3. 在vs code的终端内，使用`$ cd 文件地址(在文件夹简介里复制粘贴)`进入文件夹内，执行`$ npm init`，按照提示输入信息，将创建一个package.json文件。npm是node package manager的缩写，需要它去安装Express，设置并管理项目的配置文件/库。
-   
+
 4. 在server.js文件中输入
 
    ```js
@@ -55,9 +55,9 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
 
 5. 终端再执行`$ npm install express --save`为项目安装Express包，安装完整后可以在json文件的dependencies开发依赖下看到express。这一步产生package-lock.json文件和node_module文件夹。
 
-6.  终端执行`$ node server.js`，之后打开浏览器输入<localhost:3000>，如果是空白的，但没有显示报错。那么到目前为止这是顺利的，只是暂时没有内容显示。
+6. 终端执行`$ node server.js`，之后打开浏览器输入<localhost:3000>，如果是空白的，但没有显示报错。那么到目前为止这是顺利的，只是暂时没有内容显示。
 
-7.  到空的html文件内添加
+7. 到空的html文件内添加
 
    ```html
     <!DOCTYPE html>
@@ -72,9 +72,28 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
     </html>
    ```
 
-12. 重新刷新浏览器<localhost:3000>, 将会看到Node.js practice
+   完整版：自行添加需要用到的库url链接。
 
-13. 目前设置完了html框架，需要调用p5.js的库，来在项目中使用p5.js。如果需要用其他的库，如ML5, Three.js写三维的东西都在这里调用。此处的在线库是从CDN(Content Delivery Network)中获得的，在此网页中查看P5.js的CDN<https://p5js.org/get-started/>  
+   ```html
+   <!DOCTYPE html>
+   <html>
+   <head>
+      <meta charset="utf-8" />
+      <title>Coding Challenge Practice</title>
+       <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+   </head>
+
+   <body>
+     <h1>coding challenge practice</h1>
+     <script src="166. ASCII Video.js"></script>
+   </body>
+
+   </html>
+   ```
+
+8. 重新刷新浏览器<localhost:3000>, 将会看到 Node.js practice
+
+9. 目前设置完了html框架，需要调用p5.js的库，来在项目中使用p5.js。如果需要用其他的库，如ML5, Three.js写三维的东西都在这里调用。此处的在线库是从CDN(Content Delivery Network)中获得的，在此网页中查看P5.js的CDN<https://p5js.org/get-started/>  
 
    在`<head>`部分的`<title>`行之后，添加  
 
@@ -92,7 +111,7 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
    </head>
    ```
 
-14. html文件相当于绘画的画框，sketch.js决定绘画的具体内容。需要在`<body>`部分添加，也可以在`<head>`部分添加
+10. html文件相当于绘画的画框，sketch.js决定绘画的具体内容。需要在`<body>`部分添加，也可以在`<head>`部分添加
 
     ```html
      <body>
@@ -114,7 +133,7 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
     </html>
     ```
 
-15. 在空的sketch.js文件内粘贴以下代码
+11. 在空的sketch.js文件内粘贴以下代码
 
     ```js
     function setup() {
