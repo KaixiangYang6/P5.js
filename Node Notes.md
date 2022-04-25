@@ -30,18 +30,40 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
 
 参考<https://lab.arts.ac.uk/books/web-technology/page/web-app-template-for-beginners>
 
-1. 在终端内执行`$ node server.js`执行server.js这个文件，以下写在文件内的语句将会出现在终端上。
+1. 在vs code内，创建根文件夹，命名不要使用空格，使用`_`。
+2. 创建server.js文件public子文件夹。并在public文件夹内按照一下内容创建文件。
+
+   ```js
+   public
+      index.html
+      sketch.js
+      styles.css
+   server.js
+   ```
+
+3. 在vs code的终端内，使用`$ cd 文件地址`进入文件夹内，执行`$ npm init`，按照提示输入信息，将创建一个package.json文件。这个文件用来管理项目相关的库。再执行`$ npm install express`将安装Express到项目文件夹中。
+4. 在server.js文件中输入
+
+   ```js
+   const express = require("express");
+   const app = express();
+   const server = app.listen(3000); 
+   app.use(express.static("public"));
+   console.log("It works");
+   ```
+
+5. 在终端内执行`$ node server.js`执行server.js这个文件，以下写在文件内的语句将会出现在终端上。
 
     ```js
     console.log("It works");
     ```
 
-2. 终端执行`$ cd 文件夹地址（在文件夹简介里复制粘贴）`，进入文件夹后。在其内执行`$ npm init`，并完成内容填写。将产生一个package.json文件。
+6. 终端执行`$ cd 文件夹地址（在文件夹简介里复制粘贴）`，进入文件夹后。在其内执行`$ npm init`，并完成内容填写。将产生一个package.json文件。
 npm是node package manager的缩写，需要它去安装Express，设置项目的配置文件。
 
-3. 终端再执行`$ npm install express --save`为项目安装Express包，安装完整后可以在json文件的dependencies开发依赖下看到express。这一步产生package-lock.json文件和node_module文件夹。
+7. 终端再执行`$ npm install express --save`为项目安装Express包，安装完整后可以在json文件的dependencies开发依赖下看到express。这一步产生package-lock.json文件和node_module文件夹。
 
-4. 在server.js文件内调用express包，将其赋给变量，并执行功能。
+8. 在server.js文件内调用express包，将其赋给变量，并执行功能。
 
    ```js
    var express = require('express');
@@ -49,15 +71,15 @@ npm是node package manager的缩写，需要它去安装Express，设置项目�
    var server = app.listen(3000);
    ```
 
-5. 加载静态文件，含有html、css、sketch文件的文件夹。继续添加以下语句
+9. 加载静态文件，含有html、css、sketch文件的文件夹。继续添加以下语句
 
     ```js
     app.use(express.static('public'));
     ```
 
-6. 终端执行`$node server.js`，之后打开浏览器输入<localhost:3000>，如果是空白的，但没有显示报错。那么到目前为止这是顺利的，只是暂时没有内容显示。
+10. 终端执行`$node server.js`，之后打开浏览器输入<localhost:3000>，如果是空白的，但没有显示报错。那么到目前为止这是顺利的，只是暂时没有内容显示。
 
-7. 到空的html文件内添加
+11. 到空的html文件内添加
 
    ```html
     <!DOCTYPE html>
@@ -72,9 +94,9 @@ npm是node package manager的缩写，需要它去安装Express，设置项目�
     </html>
    ```
 
-8. 重新刷新浏览器<localhost:3000>, 将会看到Node.js practice
+12. 重新刷新浏览器<localhost:3000>, 将会看到Node.js practice
 
-9. 目前设置完了html框架，需要调用p5.js的库，来在项目中使用p5.js。如果需要用其他的库，如ML5, Three.js写三维的东西都在这里调用。此处的在线库是从CDN(Content Delivery Network)中获得的，在此网页中查看P5.js的CDN<https://p5js.org/get-started/>  
+13. 目前设置完了html框架，需要调用p5.js的库，来在项目中使用p5.js。如果需要用其他的库，如ML5, Three.js写三维的东西都在这里调用。此处的在线库是从CDN(Content Delivery Network)中获得的，在此网页中查看P5.js的CDN<https://p5js.org/get-started/>  
 
    在`<head>`部分的`<title>`行之后，添加  
 
@@ -92,7 +114,7 @@ npm是node package manager的缩写，需要它去安装Express，设置项目�
    </head>
    ```
 
-10. html文件相当于绘画的画框，sketch.js决定绘画的具体内容。需要在`<body>`部分添加，也可以在`<head>`部分添加
+14. html文件相当于绘画的画框，sketch.js决定绘画的具体内容。需要在`<body>`部分添加，也可以在`<head>`部分添加
 
     ```html
      <body>
@@ -114,7 +136,7 @@ npm是node package manager的缩写，需要它去安装Express，设置项目�
     </html>
     ```
 
-11. 在空的sketch.js文件内粘贴以下代码
+15. 在空的sketch.js文件内粘贴以下代码
 
     ```js
     function setup() {
