@@ -151,7 +151,7 @@ The **mouseReleased()** function is called every time a mouse button is released
    class Bubble {
     constructor(x, y, r) {//可赋值给属性参数一个基础值，如(x, y, r=50)
         this.x = x;//this.x这类变量，相当于占位的，没有实际意义但可充当变量。
-        this.y = y;
+        this.y = y;//当前类的y属性等于构造函数的y变量值。
         this.r = r;
     }
     move() {
