@@ -53,7 +53,7 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
    console.log("It works");
    ```
 
-5. 终端再执行`$ npm install express --save`为项目安装Express包，安装完整后可以在json文件的dependencies开发依赖下看到express。这一步产生package-lock.json文件和node_module文件夹。
+5. 终端再执行`$ npm install express --save`为项目安装Express包，安装完整后可以在json文件的dependencies开发依赖下看到express。**这一步产生package-lock.json文件和node_module文件夹。**
 
 6. 终端执行`$ node server.js`，之后打开浏览器输入<localhost:3000>，如果是空白的，但没有显示报错。那么到目前为止这是顺利的，只是暂时没有内容显示。
 
