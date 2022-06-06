@@ -88,9 +88,44 @@ map(vvariable, Min, Max, targetMin, targetMax)
 
 image(img, coordinate, coordinate, (size, size)) //image(img, 显示坐标，显示坐标，(图片尺寸，图片尺寸))
 
-createGraphics(W, h) //创建新的p5渲染对象，同时画一个off-screen图形缓存
+createCanvas(width, height) //Creates a canvas element in the document, and sets the dimensions of it in pixels. This method should be called only once at the start of setup.
+
+createGraphics(width, height) //创建新的p5渲染对象，同时画一个off-screen图形缓存
+
+createP Creates a <p></p> element in the DOM with given inner HTML. Used for paragraph length text.
+
+createDiv([html]) //<div> 元素 (或 HTML 文档分区元素) 是一个通用型的流内容容器，在不使用CSS的情况下，其对内容或布局没有任何影响。
+
+
+
+
 
 dist(x1, y1, x2, y2)  //返回两个坐标点的直线距离
+
+```js
+
+let canvas;
+let h1;
+
+function setup(){
+  canvas = createCanvas(200, 200);
+  canvas.position(x, y); //调整画布位置
+  h1 = createElement('h1', 'My favorite numbers below.')
+}
+
+function mousePressed(){
+  createP ("My favorite number is " + random(0, 10));
+}
+
+function draw(){
+  clear();  //clear the canvas
+  //background(0);
+  fill(255, 0, 0);
+  rect(100, 100, 50, 50);
+}
+
+
+```
 
 ### if else
 
