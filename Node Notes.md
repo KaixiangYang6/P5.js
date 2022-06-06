@@ -41,7 +41,7 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
    server.js
    ```
 
-3. 在vs code的终端内，使用`$ cd 文件地址(在文件夹简介里复制粘贴)`进入文件夹内，执行`$ npm init`，按照提示输入信息，将创建一个package.json文件。npm是node package manager的缩写，需要它去安装Express，设置并管理项目的配置文件/库。
+3. 在vs code的终端内，使用`$ cd 文件地址(右键左边栏的文件夹，选择copy path)`进入文件夹内，执行`$ npm init`，按照提示输入信息，将创建一个package.json文件。npm是node package manager的缩写，需要它去安装Express，设置并管理项目的配置文件/库。
 
 4. 在server.js文件中输入
 
@@ -79,13 +79,13 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
    <html>
    <head>
       <meta charset="utf-8" />
-      <title>Coding Challenge Practice</title>
+      <title>JS Practice</title>
        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
    </head>
 
    <body>
-     <h1>coding challenge practice</h1>
-     <script src="166. ASCII Video.js"></script>
+     <h1>JS practice</h1>
+     <script src="sketch.js"></script>
    </body>
 
    </html>
