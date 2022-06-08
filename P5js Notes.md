@@ -9,6 +9,9 @@ reusability可重用性 参考 <4. Reusebility.js>
 
 **Terminal进入example_app文件夹，在其内执行$ node server.js，return “It works”。浏览器内打开<http://localhost:3000/>才可以正常工作。在html内更换js文件无需再次执行node server.js，刷新浏览器即可**
 
+也可以在终端内打开合适的文件夹，执行``$ p5 generate -b 新建文件夹名称`` 创建一个新的。
+
+
 ### 英语短句
 
 comment v.注释掉
@@ -80,6 +83,7 @@ x += 1;
 x ++; //只有在加或减1的时候，才能用++或者--
 ```
 
+```js
 print("");    //用于监看
 
 fill(R,G,B,Alpha);//RGB value, transparency
@@ -92,18 +96,29 @@ createCanvas(width, height) //Creates a canvas element in the document, and sets
 
 createGraphics(width, height) //创建新的p5渲染对象，同时画一个off-screen图形缓存
 
-createP Creates a <p></p> element in the DOM with given inner HTML. Used for paragraph length text.
+createP //Creates a <p></p> element in the DOM with given inner HTML. Used for paragraph length text.
 
 createDiv([html]) //<div> 元素 (或 HTML 文档分区元素) 是一个通用型的流内容容器，在不使用CSS的情况下，其对内容或布局没有任何影响。
 
+createElement('XX', 'XXXXX') //Creates element with given tag in the DOM with given content.
 
+createSlider(min, max, [value], [step]) //value: default value of the slider (Optional)     step: step size for each tick of the slider (if step is set to 0, the slider will move continuously from the minimum to the maximum value) (Optional)
 
+.html("XXXX") //change content of an element
+
+clear() //make background transparent
 
 
 dist(x1, y1, x2, y2)  //返回两个坐标点的直线距离
 
-```js
+```
 
+在draw()函数中用于控制画布内容而变化的变量，同样可以用于控制页面元素，变量是可以被使用的。只要把页面的元素写在draw()这个循环函数里，就会跟着一起变化。
+
+
+create html element in p5.js sketch, below
+
+```js
 let canvas;
 let h1;
 
@@ -123,8 +138,69 @@ function draw(){
   fill(255, 0, 0);
   rect(100, 100, 50, 50);
 }
+```
 
+callback example, interactive slider and text, below
+注意在使用滑块和文本框的值的时候，``input.value()``需要加括号
 
+```js
+let bgcolor;
+let button;
+let slider;
+let input;
+let nameP;
+
+function setup(){
+  canvas = createCanvas(200, 200);
+  bgcolor = color(200);
+  button = createButton("go go");  //assign an element to a variable
+  button.mousePressed(changeColor);  //use mousePressed() method, and execute changeColor(), when mousePress.
+  nameP = createP('Your name!');
+  slider = createSlider(10, 100, 50);
+  input = createInput('type your name');
+}
+
+function changeColor(){
+  bgcolor = color(random(255));
+}
+
+function draw(){
+  background(bgcolor);
+  fill(255, 100, 135);
+  noStroke();
+  ellipse(100, 100, slider.value(), slider.value());
+  nameP.html(input.value());  //.html更改文本内容
+  text(input.value(), 10, 15);
+}
+```
+
+The ``.changed()`` function is called when the value of an element changes. This can be used to attach an element specific event listener.
+``changed(fxn)``fxn: function to be fired when the value of an element changes.
+参考<over, out,  change,  input.js>
+
+```js
+function setup() {
+  nameInput = createInput('type your name');
+
+  nameP.mouseOver(overpara);
+  nameP.mouseOut(outpara);
+
+  nameInput.changed(updateText); //一旦nameInput被改变将会执行updateText函数。
+}
+
+function updateText() {
+  nameP.html(nameInput.value());
+}
+```
+
+注意在以上示例中，在mouseOver，mouseOut，changed这些待触发的method括号里的都是函数名，没有括号。这意味着这些函数也是在等待触发状态，不要加括号。
+This is a very tricky thing about JavaScript, but there is a big difference between: "functionName" and "functionName()".  With the parentheses, this means "execute the function right now!"  Without the parentheses it means "here is a reference to a function which could be executed at some time later."  In the case of mouseOver() you just want to pass a reference to the function so that it can be executed behind the scenes when the mouse rolls over later.  In JavaScript, functions are just another data type you can store in a variable. The following are equivalent:
+
+```js
+function hello() { 
+} 
+var hello = function() {
+}
 ```
 
 ### if else

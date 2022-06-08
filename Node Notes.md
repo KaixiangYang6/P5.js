@@ -164,8 +164,43 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
    var socket = require('socket.io');
    ```
 
-   并创建变量io调用socket功能函数，并让它连接定义过的，正在接收3000端口的server变量。
+   并创建变量io调用socket函数，追踪server的活动events。
 
    ```js
    var io = socket(server);
+   ```
+
+3. 第一个活动就是追踪新用户连接
+
+   ```js
+   // Register a callback function to run when we have an individual connection
+   // This is run for each individual user that connects
+   io.sockets.on('connection', newConnection);//set up a connection event
+   function newConnection(socket) {
+    console.log('We have a new client: ' + socket.id);//every single new connection to a webserver gets autoatically assigned an ID number for tracking it over time.
+    //console.log(socket); //包含了IP等其他信息，可以调用。这里只调用id
+   ```
+
+   向html文件的``<head>``部分里添加CDN库。链接在socket.io的Resources-CDN里<https://cdn.socket.io/>
+
+   ```html
+   <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+   ```
+
+   并且在Client端的sketch.js文件里，执行以下案例。
+
+   ```js
+   let socket;
+
+   function setup(){
+      createCanvas(600, 400);
+      background(51);
+      socket = io.connect('http://localhost:3000');   //send message to the server/ip address
+   }
+
+   function draw(){
+      noStroke();
+      fill(255);
+      ellipse(mouseX, mouseY, 36, 36);
+   }
    ```
