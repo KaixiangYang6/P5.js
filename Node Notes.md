@@ -289,7 +289,7 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
    ```js
    // When this user emits, client side: socket.emit('otherevent',some data);
     socket.on('mouse', mouseMsg);//receive data of 'mouse'
-    
+
     //接收的数值将会直接填入到mouseMsg的参数里，去继续被用来执行mouseMsg()的内容
     function mouseMsg(data) {//what is the function of the 'data' in brackets?
         // Data comes in as whatever was sent, including objects
@@ -308,9 +308,12 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
 
 
 
-   服务器发送给除发送过来数据以外的客户端
+   服务器将数据发送给除发送过来数据的客户端以外的客户端
 
-   <https://socket.io/docs/v4/broadcasting-events/>
+   文档：<https://socket.io/docs/v4/broadcasting-events/>
 
    socket.broadcast.emit(eventName[, ...args][, ack])
+
    **To all connected clients except the sender**
+
+5. 直接参考public里的sketch.js文件，也就是客户端文件。和server.js服务器文件，梳理数据收发逻辑。
