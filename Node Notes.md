@@ -184,7 +184,26 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
    向html文件的``<head>``部分里添加CDN库。链接在socket.io的Resources-CDN里<https://cdn.socket.io/>
 
    ```html
-   <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+   <!DOCTYPE html>
+   <html>
+     <head>
+       <meta charset="UTF-8">
+       <title>Sockets Example</title>
+       <script type="text/javascript" src="https://cdn.socket.io/socket.io-3.0.5.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
+    
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/addons/p5.sound.min.js"></script>
+       <script type="text/javascript" src="sketch.js"></script>
+
+       <style>
+         body {
+           padding: 20px;
+         }
+       </style>
+     </head>
+     <body>
+     </body>
+   </html>
    ```
 
    并且在Client端的sketch.js文件里，执行以下案例。
@@ -204,3 +223,94 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
       ellipse(mouseX, mouseY, 36, 36);
    }
    ```
+
+   此时将会在终端内看到``We have a new client: ' + socket.id``，刷新网页或者从新的网页打开localhost:3000都会看到新的链接出现。
+
+4. socket.emit用来发送`活动`，socket.on用来接收`活动`。都可以从服务器端或者客户端接受或者发送。
+   socket.emit(eventName[, ...args][, ack])​
+   - ``eventName`` <string> | <symbol>
+   - ``args`` <any[]>
+   - ``ack`` <Function>
+   - Returns `true`
+
+   Emits an event to the socket identified by the string name. Any other parameters can be included. All serializable datastructures are supported, including Buffer.
+
+   ```js
+   socket.emit("hello", "world");
+   socket.emit("with-binary", 1, "2", { 3: "4", 5: Buffer.from([6, 7, 8]) });
+   ```
+
+   The``ack``argument is optional and will be called with the server answer.
+
+   Client
+
+   ```js
+   socket.emit("hello", "world", (response) => {
+     console.log(response); // "got it"
+   });
+   ```
+
+   Server
+
+   ```js
+   io.on("connection", (socket) => {
+     socket.on("hello", (arg, callback) => {
+       console.log(arg); // "world"
+       callback("got it");
+      });
+   });
+   ```
+
+
+   socket.on(eventName, callback)​
+   - eventName <string> | <symbol>
+   - listener <Function>
+   - Returns <Socket>
+  
+   Register a new handler for the given event.
+
+   ```js
+   socket.on("news", (data) => {
+     console.log(data);
+   });
+
+   // with multiple arguments
+   socket.on("news", (arg1, arg2, arg3, arg4) => {
+      // ...
+   });
+   // with callback
+   socket.on("news", (cb) => {
+     cb(0);
+   });
+   ```
+
+   如果callback是个函数的话，接收到的值将会直接填入到callback函数的参数里。比如:
+
+   ```js
+   // When this user emits, client side: socket.emit('otherevent',some data);
+    socket.on('mouse', mouseMsg);//receive data of 'mouse'
+    
+    //接收的数值将会直接填入到mouseMsg的参数里，去继续被用来执行mouseMsg()的内容
+    function mouseMsg(data) {//what is the function of the 'data' in brackets?
+        // Data comes in as whatever was sent, including objects
+        console.log(data);
+
+        socket.broadcast.emit('mouse', data);//send back out the same message, and call it 'mouse'
+        // This is a way to send to everyone including sender
+        // io.sockets.emit('message', "this goes to everyone");
+        
+    }
+   ```
+   
+
+
+
+
+
+
+   服务器发送给除发送过来数据以外的客户端
+
+   <https://socket.io/docs/v4/broadcasting-events/>
+
+   socket.broadcast.emit(eventName[, ...args][, ack])
+   **To all connected clients except the sender**

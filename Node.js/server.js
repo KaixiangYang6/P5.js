@@ -1,13 +1,11 @@
 var express = require('express');
 var app = express();
 var server = app.listen(3000);
+app.use(express.static('public'));  //use public folder which is a static folder
 
-app.use(express.static('public'));
-
-console.log("It works"); 
+console.log("It works"); //will show in terminal
 
 var socket = require('socket.io');//require the socket.io
-
 var io = socket(server);//keep track of inputs and outputs, messages in and out
 
 // Register a callback function to run when we have an individual connection
