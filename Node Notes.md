@@ -13,18 +13,18 @@
 在请求处理管道的任何位置添加额外的请求处理“中间件”。  
 Express对于Node而言是放在NPM中的一个包而已。
 
+Node需要下载安装<https://nodejs.org/zh-cn/>
 ## 英语语句
 
 set up a configuration file 设置配置文件
 
-Node需要下载安装<https://nodejs.org/zh-cn/>
 
 ## 终端Terminal命令语句&快捷键
 
 `$ ls` 列出当前文件夹内文件
 `$ clear` 清空历史
 
-ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终止当前进程，再进行安装。
+`ctrl+c`中止当前进程，常用于执行npm安装其他库的命令前，终止当前进程，再进行安装。
 
 ## 命令执行
 
@@ -55,7 +55,7 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
 
 5. 终端再执行`$ npm install express --save`为项目安装Express包，安装完整后可以在json文件的dependencies开发依赖下看到express。**这一步产生package-lock.json文件和node_module文件夹。**
 
-6. 终端执行`$ node server.js`，之后打开浏览器输入<localhost:3000>，如果是空白的，但没有显示报错。那么到目前为止这是顺利的，只是暂时没有内容显示。
+6. 终端执行`$ node server.js`，之后打开浏览器输入`localhost:3000`，如果是空白的，但没有显示报错。那么到目前为止这是顺利的，只是暂时没有内容显示。
 
 7. 到空的html文件内添加
 
@@ -156,7 +156,7 @@ ctrl+c中止当前进程，常用于执行npm安装其他库的命令前，终�
 
 ## 多端口的交互，接着上面继续
 
-1. 安装socket包，按ctrl+C终止当前node server.js进程。再执行`$ npm install socket.io --save`
+1. 安装socket包，按`ctrl+C`终止当前node server.js进程。再执行`$ npm install socket.io --save`
 
 2. 在server.js文件中，调用socket包。添加以下代码
 
