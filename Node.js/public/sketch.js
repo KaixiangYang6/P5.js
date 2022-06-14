@@ -4,43 +4,14 @@
 
 // Keep track of our socket connection
 let socket;
-let Load_streamVideo_1;
-let streamVideo_1;
-let streamVideo_2;
-let streamVideo_3;
-let webcam;
-let buttonW;
-let buttonS;
-let snapshots_1 = [];
-let counter = 0;
-let total = 70;
-
 
 function setup() {
   createCanvas(640, 480);//windowWidth, windowHeight
   background(0);
-  webcam = createCapture(VIDEO);//for test
-  webcam.size(width / 8, height / 6);//320 240
-
-  //Creates an <img> element in the DOM with given src and alternate text.
-  // let streamVideo_1_Img = createImg('http://10.64.64.53:81/stream', 'the ESP32-Cam Failed ')  
-  // streamVideo_1 = createVideo(streamVideo_1_Img);
-  // streamVideo_1 = document.createElement("video");
-  // streamVideo_1.appendChild(streamVideo_1_Img);
-
-
-  // streamVideo_1 = image(streamVideo_1, 0, 0, 80, 60);
-  // streamVideo_1.position(0, 100);
-  // streamVideo_1.size(320, 240);
-
-  buttonW = createButton('Work Hard');
-  buttonS = createButton('Slack Off');
-
-  buttonW.mousePressed(takesnap);
-
+  
   // Start a socket connection to the server
   // Some day we would run this server somewhere else
-  socket = io.connect('http://localhost:3000'); //send message to a server/IP address
+  socket = io.connect('http://localhost:4000'); //send message to a server/IP address
 
   // We make a named event called 'mouse' and write an anonymous callback function
   socket.on('mouse',
@@ -55,39 +26,7 @@ function setup() {
   );
 }
 
-function takesnap() {
-  snapshots_1.push(webcam.get());  //add streamVideo_1 element to the history_1 array
-  // image(streamVideo_1, 0, 0);
-}
-
 function draw() {
-  //add images into the array but not display. This is why images initially display one-by-one. 
-  if (webcam.loadedmetadata) {//if preload successfully
-    // snapshots_1.push(webcam.get());//get fram from webcan<video> ，add it into snapshots_1 array
-    snapshots_1[counter] = webcam.get();//every object in snapshots_1 array is equivalent to a frame
-    
-    //这里需要试一下，loadimage, preload, get(), getCurrentFrame()怎么样
-
-
-    counter++;
-    if (counter == total) { counter = 0; }
-  }
-
-  //display the images
-  let w = width / 8;
-  let h = height / 6;
-  let x = 0;
-  let y = 0;
-  for (var i = 0; i < snapshots_1.length; i++) {
-    // tint(255, 50);
-    var index = (i + frameCount) % snapshots_1.length;
-    image(snapshots_1[index], x, y, w, h);
-    x = x + w;
-    if (x >= width) {
-      x = 0;
-      y = y + h;
-    }
-  }
 }
 
 function mouseDragged() {

@@ -104,7 +104,7 @@ createElement('XX', 'XXXXX') //Creates element with given tag in the DOM with gi
 
 createSlider(min, max, [value], [step]) //value: default value of the slider (Optional)     step: step size for each tick of the slider (if step is set to 0, the slider will move continuously from the minimum to the maximum value) (Optional)
 
-.html("XXXX") //change content of an element
+.html("XXXX") //change content of an element。对原先html元素的文本内容进行替换，如果第二个参数是true则意为添加。
 
 clear() //make background transparent
 
