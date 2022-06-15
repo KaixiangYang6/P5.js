@@ -21,6 +21,7 @@ The class is a generic template.  类是一个通用模版
 assignment operation  赋值操作
 it is assigned to the diameter of the circle.  它被分配给/赋值给圆的直径。
 iterate over every element of the array 迭代/重复数组中的每个元素
+write into html file
 
 ### let var 的区别
 
@@ -56,6 +57,17 @@ console.log(this.y); // undefined
 ```
 
 **在程序和函数的顶层，let与var不同，不会在全局对象上创建一个属性，如上。**
+
+
+
+
+
+
+
+
+
+
+
 
 ## 语句&语法syntax
 
@@ -113,7 +125,7 @@ dist(x1, y1, x2, y2)  //返回两个坐标点的直线距离
 
 ```
 
-在draw()函数中用于控制画布内容而变化的变量，同样可以用于控制页面元素，变量是可以被使用的。只要把页面的元素写在draw()这个循环函数里，就会跟着一起变化。
+在draw()函数中用于控制画布内容而变化的变量，同样可以用于控制html页面元素，变量是可以被使用的。只要把页面的元素写在draw()这个循环函数里，就会跟着一起变化。
 
 
 create html element in p5.js sketch, below
@@ -169,27 +181,35 @@ function draw(){
   fill(255, 100, 135);
   noStroke();
   ellipse(100, 100, slider.value(), slider.value());
-  nameP.html(input.value());  //.html更改文本内容
+  nameP.html(input.value());  //.html替换文本内容
   text(input.value(), 10, 15);
 }
 ```
 
-The ``.changed()`` function is called when the value of an element changes. This can be used to attach an element specific event listener.
-``changed(fxn)``fxn: function to be fired when the value of an element changes.
+The `.changed()` function is called when the value of an element changes. This can be used to attach an element specific event listener.
+`changed(fxn)`fxn: function to be fired when the value of an element changes.
+`.input` event happens anytime the content of the text box changes.
 参考<over, out,  change,  input.js>
 
 ```js
 function setup() {
   nameInput = createInput('type your name');
+  nameSize = createSlider(10, 64,16);
 
   nameP.mouseOver(overpara);
   nameP.mouseOut(outpara);
+  slider.inpt(updateSize);
 
+  // nameInput.input(updateText);
   nameInput.changed(updateText); //一旦nameInput被改变将会执行updateText函数。
 }
 
 function updateText() {
   nameP.html(nameInput.value());
+}
+
+function updateSize(){
+  paragraph.style("font-size", slider,value()+"pt");  //注意字体大小需要用双引号加pt
 }
 ```
 
@@ -203,7 +223,167 @@ var hello = function() {
 }
 ```
 
-### if else
+
+
+
+
+
+
+
+## CSS & HTML
+
+js文件的优先级要高于css文件，将会覆盖css的视觉效果。
+html里写的内容会排列在js写的内容前面。
+
+`padding`CSS 简写属性控制元素所有四条边的**内边距区域**。
+`margin`属性为给定元素设置所有四个（上下左右）方向的**外边距**属性。
+
+```css
+P{
+  background: #000;
+}
+```
+
+```js
+var bgcolor;
+var button;
+var txt;
+
+function setup() {
+  createCanvas(200, 200);
+  bgcolor = color(51);
+  txt = createP('some text');
+  txt.mouseOver(changeStyle); //鼠标悬停时改变
+  txt.mouseOut(revertStyle);  //鼠标离开时，恢复
+
+  button = createButton('go');
+  // button.mousePressed(changeStyle);
+}
+
+function changeStyle() {
+  txt.style('background-color', 'pink');
+  txt.style('padding', '24px');
+}
+
+function revertStyle() {
+  txt.style('background-color', 'purple');
+  txt.style('padding', '8px');
+}
+
+function draw() {
+  background(bgcolor);
+  fill(255, 0, 175);
+  ellipse(100, 100, 50, 50);
+}
+```
+
+在CSS文件中去指定HTML中的元素时，有3种情况
+html中的tage用`tageType`，id用`#idName`，class用`.className`
+
+```html
+<body>
+  <p id = "unicorn" class = "rainbow"> A unicorn and rainbows! </p>
+  <p class = "rainbow"> Rainbows!!</p>
+  <p class = "rainbow"> More rainbows!!</p>
+  <p>Just a plain paragraph</p>
+</body>
+```
+在html文件里设置style的话，一般在`<head>`里的`<script>`之后添加。
+
+```html
+  <script></script>
+  <style>
+    #unicorn {
+      font-szie: 16pt;
+    }
+    .rainbow {
+      font-size: 24pt;
+    }
+    p {
+      font-size: 12pt;
+    }
+  </style>
+```
+
+js里可以用`select('name')`去编辑html里的内容，或者访问、使用那个元素。
+
+```js
+function setup(){
+  var paragraph = select('#unicorn');
+  paragraph.style('background-color', '#F0F');
+}
+```
+
+如果直接用`select('TagName')`，将会选择标签里的第一个，比如好多`<p></p>`，将会选择第一个`<p>`。
+如果要选择所有`tag`，使用`selectALL('p')`，这个function返回的是数组。
+`this`将会自动指代数组的当前对象上，执行语句。
+
+```js
+let paragraphs;
+
+function setup(){
+  paragraphs = selectALL('p');
+  for (var i =0; i < paragraphs.length; i++){ //给selectALL()返回的整个数组执行mouseOver。
+    paragraphs[i].mouseOver(highlight);
+    paragraphs[i].mouseOut(unhighlight);
+  }
+  function highlight(){
+    this.style('background-color', '#F0F');
+  }
+  function unhighlight(){
+    this.style('background-color', '#FFF');
+  }
+}
+```
+
+通过使用`.parent()`将DOM插入到目标html位置中。通过html的tag, class, id即可，使用id时无需使用pound井号键如下：
+
+```html
+<p id = "canvasp">This parant should include the canvas.</p>
+<p id = ".canvasp">This parant should include the canvas.</p>
+<p id = "p">This parant should include the canvas.</p>
+```
+
+```js
+function setup(){
+  var canvas = createCanvas(400, 400);
+  canvas.parent('canvasp');
+}
+```
+
+以下为另一个案例
+
+```html
+<ol>
+  </ol>
+<button id = "button">Make a happy thing</button>
+```
+
+```js
+var happy = ['rainbow', 'unicorn', 'purple', 'bacteria'];
+
+function setup() {
+  noCanvas();
+  var button = select('#button'); //access the button created in html page by id
+  button.mousePressed(addItem);
+}
+function addItem() {
+  var r = floor(random(0, happy.length));
+  var li = createElement('li', happy[r]); //创建叫做“li”的元素，并赋予内容。
+  li.parent('happylist'); //将元素插入到happylist的位置上。语句意思是：元素的父集是happylist。
+}
+```
+
+
+
+
+
+
+
+
+
+
+## if else
 
 在连续if else中，**注意布尔条件的顺序，从上到下需要从大到小满足范围逐渐扩大**，而不是满足范围逐渐缩小（x>250,x?150,x>50），否则会影响结果，结果之间互不共存。
 
@@ -222,7 +402,13 @@ if(boolean statement){
 }
 ```
 
-### and:&& or:||
+
+
+
+
+
+
+## and:&& or:||
 
 ```js
 ellipse(x, 200, 100, 100);
