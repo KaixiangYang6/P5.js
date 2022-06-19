@@ -230,7 +230,17 @@ var hello = function() {
 
 
 
+
+
+
+
+
+
+
+
 ## CSS & HTML
+
+
 
 js文件的优先级要高于css文件，将会覆盖css的视觉效果。
 html里写的内容会排列在js写的内容前面。
@@ -373,6 +383,143 @@ function addItem() {
   li.parent('happylist'); //将元素插入到happylist的位置上。语句意思是：元素的父集是happylist。
 }
 ```
+
+
+`XXXX.parent()`参数为空时，将返回XXX的父集名称，所以可以用下面案例里的这个方法去调整父集关系：
+
+```js
+// var p;
+
+function setup() {
+  noCanvas();
+  for (var i = 0; i < 5; i++) {
+    var p = createP('This is a link: ');
+    p.style('background-color', '#CCC');
+    p.style('padding', '24px');
+
+    var a = createA('#', 'apples');
+    a.mousePressed(addPhoto);
+    a.parent(p);
+  }
+}
+
+function addPhoto() {
+  var img = createImg('appleImage.jpg');
+  img.size(100, 100);
+  var paragraph = this.parent();  //获得当前元素的父集
+
+  img.parent(paragraph);  //再将父集赋给image
+}
+```
+
+如何将创建好的DOM，放到数组里并进行隐藏或者删除
+
+```js
+// var p;
+var images = [];
+function setup() {
+  noCanvas();
+  for (var i = 0; i < 5; i++) {
+    var p = createP('This is a link: ');
+    p.style('background-color', '#CCC');
+    p.style('padding', '24px');
+
+    var a = createA('#', 'apples');
+    a.mousePressed(addPhoto);
+    a.parent(p);
+  }
+
+  var button = select('#clear');  //指定DOM
+  button.mousePressed(clearStuff);  //对
+}
+function clearStuff() {
+  for (var i = 0; i < images.length; i++) {
+    images[i].remove(); //把数组里的对象挨个删除
+    // images[i].hide();  //把数组里的对象挨个隐藏
+  }
+  images = [];
+}
+function addPhoto() {
+  var img = createImg('appleImage.jpg');
+  images.push(img); //把DOM放进数组里
+  img.size(100, 100);
+  // img.parent(p);
+  // img.parent(this);
+  var paragraph = this.parent();
+  img.parent(paragraph);
+}
+```
+
+
+
+
+
+在js中assign a CSS Class dynamically，切换DOM元素的类名称
+
+```html
+  <head>
+    <style>
+
+      .apple {
+        font-size: 24pt;
+        background-color: #F00;
+        color: #FFF;
+        padding: 24pt;
+      }
+      .blueberry {
+        font-size: 24pt;
+        background-color: #00F;
+        color: #FFF;
+      }
+    </style>
+  </head>
+
+```
+
+```js
+function setup() {
+  for (var i = 0; i < 10; i++) {
+    // var p = createP('apples');
+    var p = createA('#', 'apples'); //pound means no link here, it can be click but no reaction.
+    var x = floor(random(windowWidth));
+    var y = floor(random(windowHeight));
+    p.position(x, y);
+    p.class('apple');
+  }
+
+  for (i = 0; i < 10; i++) {
+    // var p = createP('blueberries');
+    // var p = createA('http://google.com', 'blueberries')
+    p = createA('#', 'blueberries');
+    x = floor(random(windowWidth));
+    y = floor(random(windowHeight));
+    p.position(x, y);
+    p.class('blueberry');
+    p.mousePressed(becomeApple);
+  }
+}
+
+function becomeApple() {
+  this.removeClass('blueberry');  //去除当前类名称
+  this.class('apple');  //添加新的类名称
+}
+
+function draw() {}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

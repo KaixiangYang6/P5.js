@@ -3,40 +3,49 @@
 // Daniel Shiffman
 
 // Keep track of our socket connection
+let canvas; 
+
 let socket;
 let Load_streamVideo_1;
 let streamVideo_1;
 let streamVideo_2;
 let streamVideo_3;
 let webcam;
-let buttonW;
-let buttonS;
+let buttonWork;
+let buttonSlack;
+let buttonSnapshot;
 let snapshots_1 = [];
 let counter = 0;
 let total = 70;
 
 
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 function setup() {
-  createCanvas(640, 480);//windowWidth, windowHeight
+  createCanvas(windowWidth, windowHeight);//windowWidth, windowHeight
   background(0);
+
   webcam = createCapture(VIDEO);//for test
   webcam.size(width / 8, height / 6);//320 240
 
-  //Creates an <img> element in the DOM with given src and alternate text.
+  // Creates an <img> element in the DOM with given src and alternate text.
   // let streamVideo_1_Img = createImg('http://10.64.64.53:81/stream', 'the ESP32-Cam Failed ')  
   // streamVideo_1 = createVideo(streamVideo_1_Img);
   // streamVideo_1 = document.createElement("video");
   // streamVideo_1.appendChild(streamVideo_1_Img);
 
-
   // streamVideo_1 = image(streamVideo_1, 0, 0, 80, 60);
   // streamVideo_1.position(0, 100);
   // streamVideo_1.size(320, 240);
 
-  buttonW = createButton('Work Hard');
-  buttonS = createButton('Slack Off');
+  buttonWork = createButton('Work Hard');
+  buttonSlack = createButton('Slack Off');
+  buttonSnapshot = createButton('Snapshot');
 
-  buttonW.mousePressed(takesnap);
+  buttonWork.mousePressed(takesnap);
+
 
   // Start a socket connection to the server
   // Some day we would run this server somewhere else
@@ -51,13 +60,15 @@ function setup() {
       fill(0, 0, 255);
       noStroke();
       ellipse(data.x, data.y, 20, 20);
+
     }
-  );
+  )
 }
 
 function takesnap() {
   snapshots_1.push(webcam.get());  //add streamVideo_1 element to the history_1 array
   // image(streamVideo_1, 0, 0);
+  
 }
 
 function draw() {
