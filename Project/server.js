@@ -1,15 +1,17 @@
+const port = process.env.PORT || 3021;//my server have to listen to the port that Heroku gives or run locally via 3021 port
+
 const express = require('express');
 const app = express();
-const http = require("http").Server(app);
+//start by loading the http module that is standard with Node.js installations.
+const http = require("http");//http module contains the function to create the server.
+const server = http.createServer(app);
 // const server=require('http').createServer(app); //equivalent to the line above
-// server.listen(3000,'222.205.97.160'); //app.listen([port[, host[, backlog]]][, callback])
-//app.listen() is identical to http.listen
-const io = require("socket.io")(http);
+
+
+const io = require("socket.io")(server);
 // const server = app.listen(3000);
 
-//需要用路由器内分配的本机ip，并设置端口 e.g.http://192.168.0.3:3000
-const port = process.env.PORT || 3021;//服务器提供的端口
-
+//The special variable __dirname has the absolute path of where the Node.js code is being run.
 app.use(express.static(__dirname + "/public")); //use public folder which is a static folder
 console.log("It works"); //will show in terminal
 
@@ -19,7 +21,8 @@ io.sockets.on('connection', newConnection);//set up a connection event
 
 function newConnection(socket) {
     console.log('We have a new client: ' + socket.id);//every single new connection to a webserver gets autoatically assigned an ID number for tracking it over time
-
+    socket.on('disconnect', () => console.log('Client disconnected: ' + socket.id));
+    
     // When this user emits, client side: socket.emit('otherevent',some data);
     socket.on('mouse', mouseMsg);//receive data of 'mouse'
 
@@ -37,5 +40,12 @@ function newConnection(socket) {
 io.sockets.on('connection', newConnection);//set up a connection event
 // io.on("connection", newConnection);
 
-http.listen(port, () => console.log("listening on port " + port));
-// app.listen(4000); //app.listen() function is identical to Node’s http.Server.listen() method.
+//应用程序会启动服务器，并在端口port上侦听连接。监听Heroku的信息
+server.listen(port, () => {
+    console.log("listening on port " + port)
+});
+//server.listen(3000,'222.205.97.160'); //app.listen([port[, host[, backlog]]][, callback])
+//app.listen() function is identical to Node’s http.Server.listen() method.
+
+//time for test
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);

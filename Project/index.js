@@ -1,3 +1,5 @@
+//socket.io example
+
 const express = require('express');
 const app = express();
 const http = require('http');
@@ -6,6 +8,7 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 
 app.get('/', (req, res) => {
+    //provide html file to the client.
     res.sendFile(__dirname + '/index.html');
 });
 

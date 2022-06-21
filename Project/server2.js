@@ -1,9 +1,12 @@
+//same to node-socket.io example server.js显示时间的示例
 'use strict';
+
+const PORT = process.env.PORT || 3000;
 
 const express = require('express');
 const socketIO = require('socket.io');
 
-const PORT = process.env.PORT || 3000;
+
 const INDEX = '/index.html';
 
 const server = express()
