@@ -240,6 +240,18 @@ var hello = function() {
 
 ## CSS & HTML
 
+如果想要html文件读取`style.css`文件需要在头部里写上
+
+```html
+<link href="/style.css" rel="stylesheet" />
+```
+
+### File Path	Examples
+- <img src="picture.jpg">	The "picture.jpg" file is located in the same folder as the current page
+- <img src="images/picture.jpg">	The "picture.jpg" file is located in the images folder in the current folder
+- <img src="/images/picture.jpg">	The "picture.jpg" file is located in the images folder at the root of the current web
+- <img src="../picture.jpg">	The "picture.jpg" file is located in the folder one level up from the current folder
+
 
 
 js文件的优先级要高于css文件，将会覆盖css的视觉效果。

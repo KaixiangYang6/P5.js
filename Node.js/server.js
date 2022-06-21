@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
-var server = app.listen(4000);
+var server = app.listen(4000);//app.listen([port[, host[, backlog]]][, callback])
 app.use(express.static('public'));  //use public folder which is a static folder
+//app.use(express.static(__dirname + "/public"));
 
 console.log("It works"); //will show in terminal
 

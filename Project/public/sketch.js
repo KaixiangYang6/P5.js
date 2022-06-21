@@ -31,7 +31,7 @@ function setup() {
   webcam.size(width / 8, height / 6);//320 240
 
   // Creates an <img> element in the DOM with given src and alternate text.
-  // let streamVideo_1_Img = createImg('http://10.64.64.53:81/stream', 'the ESP32-Cam Failed ')  
+  // let streamVideo_1_Img = createImg('http://192.168.0.101:81/stream', 'the ESP32-Cam Failed ')  
   // streamVideo_1 = createVideo(streamVideo_1_Img);
   // streamVideo_1 = document.createElement("video");
   // streamVideo_1.appendChild(streamVideo_1_Img);
