@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Unit3 Project</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="style.css" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
   <!-- <script type="text/javascript" src="https://cdn.socket.io/socket.io-3.0.5.js"></script> -->
   <!-- <script src="/socket.io/socket.io.js"></script> -->
   <script src="lib/socket.io-3.0.5.js"></script>
@@ -14,10 +14,9 @@
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/addons/p5.sound.min.js"></script> -->
   <script src="lib/p5.sound.min.js"></script>
   <script src="lib/ml5.min.js"></script>
-
-
+  
   <script src="sketch.js"></script>
-  <script>
+  <!-- <script>
     let socket = io();
     let el;
 
@@ -25,20 +24,20 @@
       el = document.getElementById('server-time');
       el.innerHTML = 'Server time: ' + timeString;
     });
-  </script>
-  <!-- <style>
-    body {
-      padding: 0;
-      margin: 0;
-      background-color: #000
-    }
-  </style> -->
+  </script> -->
+
+
 </head>
 
 <body>
-  <!-- <div id="stream-container" class="image-container">
+  <main>
+    <!-- <div id="stream-container" class="image-container">
     <img id="stream" src="http://10.64.64.53:81/stream">
   </div> -->
+
+    <!-- <p id="server-time" style="color:white"></p> -->
+
+  </main>
 </body>
 
 </html>

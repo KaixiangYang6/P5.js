@@ -1,4 +1,4 @@
-const port = process.env.PORT || 3021;//my server have to listen to the port that Heroku gives or run locally via 3021 port
+const port = process.env.PORT || 3020;//my server have to listen to the port that Heroku gives or run locally via 3021 port
 
 const express = require('express');
 const app = express();
@@ -18,10 +18,10 @@ console.log("It works"); //will show in terminal
 // Register a callback function to run when we have an individual connection
 // This is run for each individual user that connects
 io.sockets.on('connection', newConnection);//set up a connection event
-
+// io.on("connection", newConnection);
 function newConnection(socket) {
     console.log('We have a new client: ' + socket.id);//every single new connection to a webserver gets autoatically assigned an ID number for tracking it over time
-    socket.on('disconnect', () => console.log('Client disconnected: ' + socket.id));
+    socket.on('disconnect', () => console.log('A client disconnected: ' + socket.id));
     
     // When this user emits, client side: socket.emit('otherevent',some data);
     socket.on('mouse', mouseMsg);//receive data of 'mouse'
@@ -37,9 +37,6 @@ function newConnection(socket) {
     }
 }
 
-io.sockets.on('connection', newConnection);//set up a connection event
-// io.on("connection", newConnection);
-
 //应用程序会启动服务器，并在端口port上侦听连接。监听Heroku的信息
 server.listen(port, () => {
     console.log("listening on port " + port)
@@ -47,5 +44,5 @@ server.listen(port, () => {
 //server.listen(3000,'222.205.97.160'); //app.listen([port[, host[, backlog]]][, callback])
 //app.listen() function is identical to Node’s http.Server.listen() method.
 
-//time for test
+//time for test. Emit time to the client html
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);

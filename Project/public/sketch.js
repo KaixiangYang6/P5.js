@@ -3,7 +3,7 @@
 // Daniel Shiffman
 
 // Keep track of our socket connection
-let canvas; 
+let canvas;
 
 let socket;
 let Load_streamVideo_1;
@@ -19,19 +19,21 @@ let counter = 0;
 let total = 70;
 
 
-function windowResized(){
+function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);//windowWidth, windowHeight
+  let cnv = createCanvas(windowWidth, windowHeight);//windowWidth, windowHeight
+  // cnv.position(0, 1000);
   background(0);
 
   webcam = createCapture(VIDEO);//for test
   webcam.size(width / 8, height / 6);//320 240
-
+  // webcam.hidden();
   // Creates an <img> element in the DOM with given src and alternate text.
-  // let streamVideo_1_Img = createImg('http://192.168.0.101:81/stream', 'the ESP32-Cam Failed ')  
+  let streamVideo_1_Img = createImg('http://192.168.0.101:81/stream', 'the ESP32-Cam Failed ')  
+  //object . 
   // streamVideo_1 = createVideo(streamVideo_1_Img);
   // streamVideo_1 = document.createElement("video");
   // streamVideo_1.appendChild(streamVideo_1_Img);
@@ -44,12 +46,12 @@ function setup() {
   buttonSlack = createButton('Slack Off');
   buttonSnapshot = createButton('Snapshot');
 
-  buttonWork.mousePressed(takesnap);
+  buttonSnapshot.mousePressed(takesnap);
 
 
   // Start a socket connection to the server
   // Some day we would run this server somewhere else
-  socket = io.connect('http://localhost:3000'); //send message to a server/IP address
+  socket = io.connect(); //send message to a server/IP address
 
   // We make a named event called 'mouse' and write an anonymous callback function
   socket.on('mouse',
@@ -63,12 +65,23 @@ function setup() {
 
     }
   )
+
+  //Serve Time Display
+  let serverTime = createP("");
+  serverTime.style('color', 'white');
+  serverTime.style('font-family', 'system-ui');
+  socket.on('time', function (timeString) {
+    serverTime.html('Server time: ' + timeString);
+
+    // el.innerHTML = 'Server time: ' + timeString;
+  })
+
 }
 
 function takesnap() {
   snapshots_1.push(webcam.get());  //add streamVideo_1 element to the history_1 array
   // image(streamVideo_1, 0, 0);
-  
+
 }
 
 function draw() {
@@ -76,7 +89,7 @@ function draw() {
   if (webcam.loadedmetadata) {//if preload successfully
     // snapshots_1.push(webcam.get());//get fram from webcan<video> ，add it into snapshots_1 array
     snapshots_1[counter] = webcam.get();//every object in snapshots_1 array is equivalent to a frame
-    
+
     //这里需要试一下，loadimage, preload, get(), getCurrentFrame()怎么样
 
 
