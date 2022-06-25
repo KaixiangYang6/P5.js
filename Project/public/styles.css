@@ -1,16 +1,21 @@
-/* html, body{
+html, body{
     margin: 0;
     padding: 0;
     background-color: #000;
-
 }
 
-canvas {
+/* 保留scroller功能但是不现实 */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* canvas {
     display: block;
 } */
 
-body {
+/* body {
     padding: 0;
     margin: 0;
     background-color: #000
-  }
+
+  } */

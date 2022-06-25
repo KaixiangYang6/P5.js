@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        if ('geolocation' in navigator) {
+            console.log('geolocation available')
+            navigator.geolocation.getCurrentPosition((position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                document.getElementById('latitude').textContent = lat;
+                document.getElementById('longitude').textContent = lon;
+            });
+
+        } else {
+            console.log('geolocation ')
+        }
+    </script>
+    <h1>Data Selfie App</h1>
+    <div><a href="/">enter</a> | <a href="/logs">list</a></div>
+    <p>
+        latitude: <span id="latitude"></span>&deg;<br />
+        longitude: <span id="longitude"></span>&deg;
+    </p>
+    <label for="mood">enter your mood</label>
+    <input id="mood" value="rainbow" />
+    <button id="submit">submit</button>
+    <script src="sketch.js"></script>
+</body>
+
+</html>

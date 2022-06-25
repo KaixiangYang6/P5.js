@@ -8,7 +8,7 @@ function preload() {
     flower = loadImage('kittens/flower.png');
     //数组kittens的每一个元素都加载了一张图片
     for (let i = 0; i < 5; i++) {
-        kittens[i] = loadImage(`kittens/kitten${i}.jpg`);   //数组kittens的每个元素都分别加载了一张图片
+        kittens[i] = loadImage(`kittens/kitten${i}.jpg`);   //数组kittens的每个元素都从本地文件夹里挨个加载一张图片
     }
 }
 

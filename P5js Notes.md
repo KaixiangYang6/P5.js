@@ -519,9 +519,11 @@ function becomeApple() {
 function draw() {}
 ```
 
+在htlm中<span>和<div>相似都是无意义的插入元素，span是在标签中，div是在标签外
 
+### HTML 4 Entity Names特殊符号代码
 
-
+> reference: <https://www.w3schools.com/charsets/ref_html_entities_4.asp>
 
 
 
