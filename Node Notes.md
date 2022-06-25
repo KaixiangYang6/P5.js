@@ -150,7 +150,7 @@ set up a configuration file 设置配置文件
     }
     ```
 
-   刷新浏览器或者再次执行`$ node server.js`就可以正常看到内容了。
+   刷新浏览器或者再次执行`$ node server.js`就可以正常看到内容了。因为在其他项目中已经执行过`$ npm install nodemon -g`全局安装了nodemon，所以在这个文件夹中，只需要执行`$ nodemon server.js`就可以自动刷新并执行server.js，不用每次修改后再执行`$ node server.js`。
 
    **到此为止，这个文件夹可以用来在本地进行p5.js的运行。**
 
