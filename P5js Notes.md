@@ -299,7 +299,8 @@ function draw() {
 }
 ```
 
-在CSS文件中去指定HTML中的元素时，有3种情况
+### tageType, class, id指定元素
+在JS文件，CSS文件中去指定HTML中的元素时，有3种情况
 html中的tage用`tageType`，id用`#idName`，class用`.className`
 
 ```html
