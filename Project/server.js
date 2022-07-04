@@ -1,8 +1,8 @@
 const port = process.env.PORT || 4000;//my server have to listen to the port that Heroku gives or run locally via 3021 port
 // laptop IP address in LAN : Server port ---- 192.168.0.100:4000
 
-const express = require('express');
-const app = express();
+const express = require('express'); //trigger the express function
+const app = express();  //store the result of express function in a variable called app
 //start by loading the http module that is standard with Node.js installations.
 const http = require("http");//http module contains the function to create the server.
 const server = http.createServer(app);

@@ -42,7 +42,7 @@ function streamSuccess_4() {
 
 //setup for WebSocket.
 let streamVideoSRC;
-const WS_URL = 'ws://192.168.0.100:8888';  //$ ifconfig for Mac to get local IP address, at en0: inet
+const WS_URL = 'ws://172.16.99.253:8888';  //$ ifconfig for Mac to get local IP address, at en0: inet
 const ws = new WebSocket(WS_URL);
 let urlObject;
 let imageFrame;
@@ -109,15 +109,13 @@ function setup() {
     let canvas = createCanvas(windowWidth, windowHeight - 300);
     canvas.position(0, 30);
     background('#0D162F');
-    // background(0);
+    noCanvas();
 
     //layout
-
 
     // webcam = createCapture(VIDEO);
     // webcam.position(0,1200);
     // webcam.size(320, 240);
-
 
 
     //SET UP BUTTONS
@@ -167,12 +165,12 @@ function draw() {
     let x = 0;
     let y = height * 0.5;
 
-    if (test) {
-        image(streamVideo_1, x, 0, w, h);
-        image(streamVideo_2, width * 0.5, 0, w, h);
-        image(streamVideo_3, x, y, w, h);
-        image(streamVideo_4, width * 0.5, y, w, h);
-    }
+    // if (test) {
+    //     image(streamVideo_1, x, 0, w, h);
+    //     image(streamVideo_2, width * 0.5, 0, w, h);
+    //     image(streamVideo_3, x, y, w, h);
+    //     image(streamVideo_4, width * 0.5, y, w, h);
+    // }
 
     //when the buttonSnapshot is clicked, execute once the if function
     if (snapRect) {

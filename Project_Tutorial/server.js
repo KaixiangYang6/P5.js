@@ -37,7 +37,7 @@ wsServer.on('connection', (ws, req) => {
 app.use(express.static(__dirname + "/public"));
 //provide client.html to clients' browser
 app.get('/client', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './client.html'))
+    res.sendFile(path.resolve(__dirname, '/public/client.html'))
 });
 
 //this server need to listen to the HTTP_PORT for the client's HTTP connection which is from desktop, mobile whatever.

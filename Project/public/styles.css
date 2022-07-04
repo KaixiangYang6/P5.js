@@ -41,65 +41,88 @@ h2 {
     color: #FFF;
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
-    width: 170px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    /* width: 170px; */
+    width: 40vw;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     cursor: pointer;
     display: inline-block;
     border-radius: 25px;
     border: none;
 }
-.gradient-button:hover{
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+.gradient-button:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     margin: 8px 10px 12px;
 }
-.gradient-button-1 {background-image: linear-gradient(to right, #fa9969 0%, #cd4a3e 51%, #ff8f94 100%)}
-.gradient-button-1:hover { background-position: right center; }
+
 .gradient-button-1 {
-    width: 180px;
-    /* height: 300px; */
-    top: 77%;   
-    left: 1%;
+    background-image: linear-gradient(to right, #fa9969 0%, #cd4a3e 51%, #ff8f94 100%)
+}
+
+.gradient-button-1:hover {
+    background-position: right center;
+}
+
+.gradient-button-1 {
+    /* width: 180px; */
+    top: 77vh;
+    left: 5vw;
     /* top: 540px;   
     left: 1%; */
     z-index: 4;
     position: absolute;
 }
 
-.gradient-button-2 {background-image: linear-gradient(to right, #02a6b5 0%, #01955f 51%, #3dcaed 100%)}
-.gradient-button-2:hover { background-position: right center; }
 .gradient-button-2 {
-    top: 77%;
-    left: 53%;
+    background-image: linear-gradient(to right, #02a6b5 0%, #01955f 51%, #3dcaed 100%)
+}
+
+.gradient-button-2:hover {
+    background-position: right center;
+}
+
+.gradient-button-2 {
+    top: 77vh;
+    left: 52vw;
     /* top: 465px;
     left: 53%; */
     z-index: 3;
     position: absolute;
 }
-.gradient-button-3 {background-image: linear-gradient(to right, #0f8ec9 0%, #434cc9 51%, #7474BF 100%)}
-.gradient-button-3:hover { background-position: right center; }
+
+/* SnapShot */
 .gradient-button-3 {
-    top: 65%;
-    left: 27.5%;
-    /* top: 65%;
-    left: 27.5%; */
+    background-image: linear-gradient(to right, #0f8ec9 0%, #434cc9 51%, #7474BF 100%)
+}
+
+.gradient-button-3:hover {
+    background-position: right center;
+}
+
+.gradient-button-3 {
+    /* width: 45vw; */
+    top: 70vh;
+    left: 28vw;
     z-index: 2;
     position: absolute;
 }
 
 
-.gradient-button-4 {background-image: linear-gradient(to right, #212a3d 0%, #131e2e 51%, #2b3153 100%)}
-.gradient-button-4:hover { background-position: right center; }
 .gradient-button-4 {
-    top: 120%;
-    left: 27.5%;
-    /* top: 65%;
-    left: 27.5%; */
+    background-image: linear-gradient(to right, #212a3d 0%, #131e2e 51%, #2b3153 100%)
+}
+
+.gradient-button-4:hover {
+    background-position: right center;
+}
+
+.gradient-button-4 {
+    top: 120vh;
+    left: 28vw;
     z-index: 2;
     position: absolute;
 }
-
-
 canvas {
     display: block;
 }
