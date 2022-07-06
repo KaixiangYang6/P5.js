@@ -109,7 +109,7 @@ function setup() {
   // streamVideo_1.size(width / 8, width / 8 * 3);
 
 
-  
+
   buttonWork = createButton('Work Hard');
   buttonSlack = createButton('Slack Off');
   buttonSnapshot = createButton('Snapshot');
@@ -142,9 +142,10 @@ function setup() {
   )
 
   //Serve Time Display
-  serverTime = createP("");
-  serverTime.style('color', 'white');
-  serverTime.style('font-family', 'system-ui');
+  serverTime = document.getElementById('serverTime');
+  // serverTime = createP("");
+  // serverTime.style('color', 'white');
+  // serverTime.style('font-family', 'system-ui');
   socket.on('time', function (timeString) {
     serverTime.html('Server time: ' + timeString);
 

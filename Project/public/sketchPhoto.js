@@ -1,5 +1,6 @@
 let webcam;
 let button;
+let serverTime;
 // let snapshots = [];
 let streamVideo_1;
 let streamVideo_2;
@@ -19,7 +20,7 @@ let go2 = false;
 let go3 = false;
 let go4 = false;
 
-let test = true;
+let test = false;
 
 function streamSuccess_1() {
     go1 = true;
@@ -96,6 +97,17 @@ function setup() {
         let fullScreen = fullscreen();
         fullscreen(!fullScreen);
     });
+
+    //Serve Time Display
+    serverTime = document.getElementById("serverTime");
+    // serverTime = createP("");
+    // serverTime.style('color', 'white');
+    // serverTime.style('font-family', 'system-ui');
+    socket.on('time', function (timeString) {
+        serverTime.innerHTML = 'Server time: ' + timeString;
+
+        // el.innerHTML = 'Server time: ' + timeString;
+    })
 
 }
 

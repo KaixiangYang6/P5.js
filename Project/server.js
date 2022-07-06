@@ -37,7 +37,7 @@ function newConnection(socket) {
     }
 }
 
-//应用程序会启动服务器，并在端口port上侦听连接。监听Heroku的信息
+//http应用程序会启动服务器，并在端口port上侦听连接。监听Heroku的信息
 server.listen(port, () => {console.log("listening on port " + port)});
 //server.listen(3000,'222.205.97.160'); //app.listen([port[, host[, backlog]]][, callback])
 //app.listen() function is identical to Node’s http.Server.listen() method.

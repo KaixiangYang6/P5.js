@@ -123,6 +123,21 @@ h2 {
     z-index: 2;
     position: absolute;
 }
+
+#serverTime {
+    font-family: "Arial Black", system-ui, Helvetica, sans-serif;
+    text-align: center;
+    padding-left: 10px;
+    color: #e4e6f9;
+    position: absolute;
+    margin: 10px auto;
+    padding: auto;
+    /* display: inline; */
+    top: 129vh;
+    /* left: 0vw; */
+    z-index: 6;
+}
+
 canvas {
     display: block;
 }
