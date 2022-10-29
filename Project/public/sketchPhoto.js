@@ -45,8 +45,8 @@ function setup() {
     // Some day we would run this server somewhere else
     socket = io.connect(); //send message to a server/IP address
     //SET UP TITLE
-    let h1 = document.getElementsByTagName("h1")
-    [0].style.fontSize = "13px";
+    // let h1 = document.getElementsByTagName("h1")
+    // [0].style.fontSize = "13px";
 
     let canvas = createCanvas(windowWidth, windowHeight - 300);
     canvas.position(0, 30);
@@ -89,7 +89,7 @@ function setup() {
     buttonSnapshot.addEventListener('click', function () {
         console.log('SNAPSHOT')
         takesnap();
-        // snapRect = 1;
+
     })
 
     buttonFullscreen = document.querySelector("#FULLSCREEN");
@@ -141,7 +141,7 @@ function draw() {
     //when the buttonSnapshot is clicked, execute once the if function
     if (snapRect) {
         rectMask(245);
-        // for (let i = 0; i < 2; i++) {
+        
         if (RectOpacity <= 0) {
             fadeAmount = 11;
             console.log("fade in 11");
@@ -157,7 +157,7 @@ function draw() {
         strokeWeight(7);
         rect(0, 0, width, height);
         RectOpacity += fadeAmount;
-        // }
+        
 
     }
 }
